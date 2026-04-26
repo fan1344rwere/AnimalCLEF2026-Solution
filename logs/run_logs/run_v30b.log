@@ -1,0 +1,146 @@
+Device: cuda
+GPU: NVIDIA GeForce RTX 5090, VRAM: 31.4GB
+======================================================================
+AnimalCLEF2026 V30b: WildlifeReID-10k SupCon (DINOv3-7B + SigLIP2)
+======================================================================
+============================================================
+PHASE 1: Extract DINOv3 + SigLIP2 features for WildlifeReID-10k
+============================================================
+Wildlife images: 71575
+DINOv3-7B: shards deleted (disk freed earlier), skipped for wildlife
+  Competition has V23 DINOv3 cache → will use in Phase 3 ensemble
+
+Loading SigLIP2-Giant via transformers from ./models/siglip2-giant...
+`torch_dtype` is deprecated! Use `dtype` instead!
+
+Loading weights:   0%|          | 0/1096 [00:00<?, ?it/s]
+Loading weights:   0%|          | 4/1096 [00:01<04:35,  3.96it/s]
+Loading weights:   5%|▍         | 52/1096 [00:01<00:20, 50.97it/s]
+Loading weights:   8%|▊         | 84/1096 [00:01<00:13, 76.31it/s]
+Loading weights:   9%|▉         | 98/1096 [00:01<00:11, 84.71it/s]
+Loading weights:  10%|█         | 114/1096 [00:01<00:11, 84.00it/s]
+Loading weights:  12%|█▏        | 128/1096 [00:01<00:10, 93.39it/s]
+Loading weights:  13%|█▎        | 141/1096 [00:01<00:09, 99.91it/s]
+Loading weights:  14%|█▍        | 154/1096 [00:02<00:08, 105.25it/s]
+Loading weights:  15%|█▌        | 167/1096 [00:02<00:19, 46.57it/s] 
+Loading weights:  19%|█▉        | 212/1096 [00:02<00:09, 96.07it/s]
+Loading weights:  21%|██▏       | 233/1096 [00:03<00:08, 96.68it/s]
+Loading weights:  23%|██▎       | 250/1096 [00:03<00:10, 84.05it/s]
+Loading weights:  24%|██▍       | 264/1096 [00:03<00:09, 92.10it/s]
+Loading weights:  25%|██▌       | 278/1096 [00:03<00:09, 83.97it/s]
+Loading weights:  27%|██▋       | 292/1096 [00:03<00:09, 81.33it/s]
+Loading weights:  28%|██▊       | 309/1096 [00:03<00:08, 96.86it/s]
+Loading weights:  29%|██▉       | 322/1096 [00:04<00:08, 86.37it/s]
+Loading weights:  30%|███       | 333/1096 [00:04<00:08, 89.66it/s]
+Loading weights:  31%|███▏      | 344/1096 [00:04<00:09, 78.42it/s]
+Loading weights:  32%|███▏      | 355/1096 [00:04<00:08, 84.80it/s]
+Loading weights:  34%|███▍      | 370/1096 [00:04<00:07, 97.78it/s]
+Loading weights:  35%|███▍      | 381/1096 [00:04<00:08, 82.45it/s]
+Loading weights:  36%|███▌      | 395/1096 [00:04<00:07, 95.05it/s]
+Loading weights:  37%|███▋      | 406/1096 [00:05<00:07, 96.74it/s]
+Loading weights:  38%|███▊      | 418/1096 [00:05<00:08, 82.96it/s]
+Loading weights:  39%|███▉      | 430/1096 [00:05<00:07, 91.16it/s]
+Loading weights:  40%|████      | 441/1096 [00:05<00:08, 77.56it/s]
+Loading weights:  41%|████      | 451/1096 [00:05<00:07, 82.42it/s]
+Loading weights:  42%|████▏     | 461/1096 [00:05<00:07, 86.23it/s]
+Loading weights:  43%|████▎     | 471/1096 [00:05<00:08, 71.92it/s]
+Loading weights:  44%|████▍     | 480/1096 [00:06<00:10, 61.41it/s]
+Loading weights:  44%|████▍     | 487/1096 [00:06<00:09, 62.61it/s]
+Loading weights:  45%|████▌     | 497/1096 [00:06<00:10, 59.16it/s]
+Loading weights:  46%|████▌     | 504/1096 [00:06<00:09, 61.45it/s]
+Loading weights:  47%|████▋     | 511/1096 [00:06<00:09, 63.31it/s]
+Loading weights:  47%|████▋     | 519/1096 [00:06<00:08, 67.38it/s]
+Loading weights:  48%|████▊     | 527/1096 [00:06<00:10, 56.05it/s]
+Loading weights:  49%|████▊     | 534/1096 [00:07<00:09, 59.09it/s]
+Loading weights:  49%|████▉     | 541/1096 [00:07<00:11, 49.41it/s]
+Loading weights:  50%|█████     | 551/1096 [00:07<00:09, 60.27it/s]
+Loading weights:  51%|█████     | 558/1096 [00:07<00:10, 51.02it/s]
+Loading weights:  51%|█████▏    | 564/1096 [00:07<00:12, 43.35it/s]
+Loading weights:  53%|█████▎    | 577/1096 [00:07<00:08, 60.16it/s]
+Loading weights:  53%|█████▎    | 585/1096 [00:08<00:09, 53.78it/s]
+Loading weights:  54%|█████▍    | 592/1096 [00:08<00:08, 56.97it/s]
+Loading weights:  55%|█████▍    | 599/1096 [00:08<00:10, 48.94it/s]
+Loading weights:  56%|█████▌    | 611/1096 [00:08<00:07, 63.81it/s]
+Loading weights:  56%|█████▋    | 619/1096 [00:08<00:08, 54.90it/s]
+Loading weights:  57%|█████▋    | 626/1096 [00:08<00:08, 58.05it/s]
+Loading weights:  58%|█████▊    | 633/1096 [00:08<00:09, 49.35it/s]
+Loading weights:  58%|█████▊    | 641/1096 [00:09<00:08, 55.77it/s]
+Loading weights:  59%|█████▉    | 648/1096 [00:09<00:07, 59.01it/s]
+Loading weights:  60%|█████▉    | 655/1096 [00:09<00:08, 49.40it/s]
+Loading weights:  61%|██████▏   | 673/1096 [00:09<00:06, 63.18it/s]
+Loading weights:  62%|██████▏   | 681/1096 [00:09<00:07, 56.32it/s]
+Loading weights:  63%|██████▎   | 687/1096 [00:09<00:07, 56.98it/s]
+Loading weights:  63%|██████▎   | 693/1096 [00:09<00:06, 57.61it/s]
+Loading weights:  64%|██████▍   | 699/1096 [00:10<00:08, 47.08it/s]
+Loading weights:  65%|██████▍   | 707/1096 [00:10<00:07, 53.99it/s]
+Loading weights:  65%|██████▌   | 715/1096 [00:10<00:07, 48.77it/s]
+Loading weights:  66%|██████▌   | 723/1096 [00:10<00:06, 55.39it/s]
+Loading weights:  67%|██████▋   | 731/1096 [00:10<00:06, 60.66it/s]
+Loading weights:  67%|██████▋   | 738/1096 [00:10<00:05, 62.71it/s]
+Loading weights:  68%|██████▊   | 745/1096 [00:10<00:05, 62.97it/s]
+Loading weights:  69%|██████▉   | 757/1096 [00:11<00:04, 76.71it/s]
+Loading weights:  70%|███████   | 769/1096 [00:11<00:04, 70.45it/s]
+Loading weights:  71%|███████   | 780/1096 [00:11<00:04, 66.82it/s]
+Loading weights:  73%|███████▎  | 795/1096 [00:11<00:03, 82.30it/s]
+Loading weights:  73%|███████▎  | 804/1096 [00:11<00:03, 80.24it/s]
+Loading weights:  75%|███████▌  | 822/1096 [00:11<00:03, 87.52it/s]
+Loading weights:  76%|███████▌  | 835/1096 [00:11<00:02, 95.01it/s]
+Loading weights:  77%|███████▋  | 846/1096 [00:12<00:03, 81.36it/s]
+Loading weights:  79%|███████▉  | 865/1096 [00:12<00:02, 84.49it/s]
+Loading weights:  80%|███████▉  | 875/1096 [00:12<00:02, 86.40it/s]
+Loading weights:  81%|████████  | 886/1096 [00:12<00:02, 76.32it/s]
+Loading weights:  82%|████████▏ | 900/1096 [00:12<00:02, 86.83it/s]
+Loading weights:  83%|████████▎ | 910/1096 [00:12<00:02, 77.12it/s]
+Loading weights:  85%|████████▍ | 930/1096 [00:13<00:01, 100.89it/s]
+Loading weights:  86%|████████▌ | 942/1096 [00:13<00:01, 104.02it/s]
+Loading weights:  87%|████████▋ | 954/1096 [00:13<00:01, 102.90it/s]
+Loading weights:  88%|████████▊ | 965/1096 [00:13<00:01, 87.77it/s] 
+Loading weights:  89%|████████▉ | 979/1096 [00:13<00:01, 98.18it/s]
+Loading weights:  91%|█████████ | 995/1096 [00:13<00:01, 77.85it/s]
+Loading weights:  92%|█████████▏| 1006/1096 [00:13<00:01, 83.97it/s]
+Loading weights:  93%|█████████▎| 1019/1096 [00:14<00:00, 88.30it/s]
+Loading weights:  94%|█████████▍| 1029/1096 [00:14<00:00, 79.07it/s]
+Loading weights:  95%|█████████▍| 1041/1096 [00:14<00:00, 84.83it/s]
+Loading weights:  96%|█████████▌| 1051/1096 [00:14<00:00, 72.44it/s]
+Loading weights:  98%|█████████▊| 1075/1096 [00:14<00:00, 90.59it/s]
+Loading weights:  99%|█████████▉| 1087/1096 [00:14<00:00, 93.84it/s]
+Loading weights: 100%|██████████| 1096/1096 [00:14<00:00, 73.56it/s]
+  SigLIP2-Giant loaded! GPU mem: 3.5GB
+  [SigLIP2] 800/71575 (8s, ETA 738s)
+  [SigLIP2] 1600/71575 (16s, ETA 702s)
+  [SigLIP2] 2400/71575 (24s, ETA 688s)
+  [SigLIP2] 3200/71575 (32s, ETA 676s)
+  [SigLIP2] 4000/71575 (39s, ETA 664s)
+  [SigLIP2] 4800/71575 (47s, ETA 655s)
+  [SigLIP2] 5600/71575 (70s, ETA 827s)
+  [SigLIP2] 6400/71575 (95s, ETA 963s)
+  [SigLIP2] 7200/71575 (113s, ETA 1009s)
+  [SigLIP2] 8000/71575 (135s, ETA 1071s)
+  [SigLIP2] 8800/71575 (160s, ETA 1144s)
+  [SigLIP2] 9600/71575 (184s, ETA 1190s)
+  [SigLIP2] 10400/71575 (207s, ETA 1217s)
+  [SigLIP2] 11200/71575 (227s, ETA 1226s)
+  [SigLIP2] 12000/71575 (265s, ETA 1313s)
+  [SigLIP2] 12800/71575 (294s, ETA 1352s)
+  [SigLIP2] 13600/71575 (307s, ETA 1310s)
+  [SigLIP2] 14400/71575 (323s, ETA 1282s)
+  [SigLIP2] 15200/71575 (341s, ETA 1264s)
+  [SigLIP2] 16000/71575 (355s, ETA 1233s)
+  [SigLIP2] 16800/71575 (378s, ETA 1234s)
+  [SigLIP2] 17600/71575 (403s, ETA 1237s)
+  [SigLIP2] 18400/71575 (432s, ETA 1247s)
+  [SigLIP2] 19200/71575 (453s, ETA 1235s)
+  [SigLIP2] 20000/71575 (467s, ETA 1205s)
+  [SigLIP2] 20800/71575 (475s, ETA 1160s)
+  [SigLIP2] 21600/71575 (483s, ETA 1117s)
+  [SigLIP2] 22400/71575 (491s, ETA 1077s)
+  [SigLIP2] 23200/71575 (499s, ETA 1040s)
+  [SigLIP2] 24000/71575 (506s, ETA 1004s)
+  [SigLIP2] 24800/71575 (514s, ETA 970s)
+  [SigLIP2] 25600/71575 (522s, ETA 938s)
+  [SigLIP2] 26400/71575 (530s, ETA 907s)
+  [SigLIP2] 27200/71575 (538s, ETA 877s)
+  [SigLIP2] 28000/71575 (546s, ETA 849s)
+  [SigLIP2] 28800/71575 (553s, ETA 822s)
+  [SigLIP2] 29600/71575 (561s, ETA 795s)
+  [SigLIP2] 30400/71575 (569s, ETA 770s)

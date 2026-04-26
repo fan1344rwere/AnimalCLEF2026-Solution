@@ -1,0 +1,110 @@
+Device: cuda
+GPU: NVIDIA GeForce RTX 5090, VRAM: 31.4GB
+Metadata: 15483 rows, Submission template: 2409 rows
+Wildlife: 140488 images, 10772 identities, 37 datasets
+DINOv3: both cached
+SigLIP2: both cached
+EVA02: both cached
+MegaDesc-L-384: cached
+
+============================================================
+STAGE 1f: MegaDescriptor-DINOv2-518 Feature Extraction
+============================================================
+  Loading MegaDescriptor-DINOv2-518...
+  MegaDescriptor-DINOv2-518 loaded (fp32, ~1.2GB VRAM)
+  [MegaDesc-DINOv2] 1600/15483 (77s, ETA 665s)
+  [MegaDesc-DINOv2] 3200/15483 (157s, ETA 602s)
+  [MegaDesc-DINOv2] 4800/15483 (240s, ETA 535s)
+  [MegaDesc-DINOv2] 6400/15483 (316s, ETA 448s)
+  [MegaDesc-DINOv2] 8000/15483 (361s, ETA 337s)
+  [MegaDesc-DINOv2] 9600/15483 (406s, ETA 249s)
+  [MegaDesc-DINOv2] 11200/15483 (450s, ETA 172s)
+  [MegaDesc-DINOv2] 12800/15483 (494s, ETA 104s)
+  [MegaDesc-DINOv2] 14400/15483 (539s, ETA 41s)
+  [MegaDesc-DINOv2] Done: (15483, 1024) in 583s
+  Saved: ./feat_cache/megadesc_dinov2_features.npz ((15483, 1024))
+
+All features extracted and cached!
+
+============================================================
+STAGE 2-5: Per-Species Clustering Pipeline
+============================================================
+  Loaded dinov3: (15483, 4096)
+  Loaded siglip2: (15483, 1536)
+  Loaded eva02: (15483, 1024)
+  Loaded megadesc_l384: (15483, 1536)
+  Loaded megadesc_dinov2: (15483, 1024)
+
+Available backbones: ['dinov3', 'siglip2', 'eva02', 'megadesc_l384', 'megadesc_dinov2']
+
+==================================================
+Processing: LynxID2025
+==================================================
+  Train: 2957 images, Test: 946 images
+  Optimizing backbone weights...
+    Weight search: 126 combos, best ARI=0.0064
+    Weights: {'dinov3': np.float64(1.0), 'siglip2': np.float64(0.0), 'eva02': np.float64(0.0), 'megadesc_l384': np.float64(0.0), 'megadesc_dinov2': np.float64(0.0)}
+  Computing fused similarity...
+  Running k-Reciprocal Re-ranking...
+    Computing k-reciprocal neighbors (k1=20)...
+    Expanding reciprocal sets (k2=6)...
+    Computing Jaccard distances...
+  Clustering...
+    Best threshold: 0.230 (train ARI=0.0982)
+  Post-processing...
+  Train ARI: 0.0990
+  Test: 946 images -> 447 clusters, 73 singletons
+
+==================================================
+Processing: SalamanderID2025
+==================================================
+  Train: 1388 images, Test: 689 images
+  Optimizing backbone weights...
+    Weight search: 126 combos, best ARI=0.0007
+    Weights: {'dinov3': np.float64(0.4), 'siglip2': np.float64(0.0), 'eva02': np.float64(0.0), 'megadesc_l384': np.float64(0.6000000000000001), 'megadesc_dinov2': np.float64(0.0)}
+  Computing fused similarity...
+  Running k-Reciprocal Re-ranking...
+    Computing k-reciprocal neighbors (k1=20)...
+    Expanding reciprocal sets (k2=6)...
+    Computing Jaccard distances...
+  Clustering...
+    Best threshold: 0.120 (train ARI=0.0803)
+  Post-processing...
+  Train ARI: 0.0021
+  Test: 689 images -> 212 clusters, 76 singletons
+
+==================================================
+Processing: SeaTurtleID2022
+==================================================
+  Train: 8729 images, Test: 500 images
+  Optimizing backbone weights...
+    Weight search: 126 combos, best ARI=0.0034
+    Weights: {'dinov3': np.float64(0.8), 'siglip2': np.float64(0.0), 'eva02': np.float64(0.0), 'megadesc_l384': np.float64(0.2), 'megadesc_dinov2': np.float64(0.0)}
+  Computing fused similarity...
+  Skipping k-Reciprocal (N=9229 too large)
+  Clustering...
+    Best threshold: 0.110 (train ARI=0.0458)
+  Post-processing...
+  Train ARI: 0.0029
+  Test: 500 images -> 1076 clusters, 21 singletons
+
+==================================================
+Processing: TexasHornedLizards
+==================================================
+  Train: 0 images, Test: 274 images
+  No/few training data, using equal weights
+  Computing fused similarity...
+  Running k-Reciprocal Re-ranking...
+    Computing k-reciprocal neighbors (k1=20)...
+    Expanding reciprocal sets (k2=6)...
+    Computing Jaccard distances...
+  Clustering...
+    Using default threshold: 0.5
+  Post-processing...
+  Test: 274 images -> 1 clusters, 0 singletons
+
+============================================================
+V21W COMPLETE - 56.6 minutes
+Submission: ./ov21w/submission.csv (2409 rows)
+Feature caches: ./feat_cache, ./feat_cache_wildlife
+============================================================

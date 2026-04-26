@@ -1,0 +1,10 @@
+Device: cpu
+======================================================================
+AnimalCLEF2026 V25: HAC + Visual-guided TexasHorned
+======================================================================
+Metadata: 15483 rows, Submission: 2409 rows
+
+Loading cached features...
+  dinov3: (15483, 8192)
+  siglip2: (15483, 1536)
+  megadesc: (15483, 1536)

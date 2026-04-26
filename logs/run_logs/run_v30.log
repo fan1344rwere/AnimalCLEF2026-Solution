@@ -1,0 +1,22 @@
+Device: cuda
+GPU: NVIDIA GeForce RTX 5090, VRAM: 31.4GB
+======================================================================
+AnimalCLEF2026 V30: WildlifeReID-10k Pre-trained SupCon
+======================================================================
+============================================================
+PHASE 1: Extract features for WildlifeReID-10k
+============================================================
+Wildlife images: 71575
+
+Extracting dinov3...
+Traceback (most recent call last):
+  File "./v30_wildlife_supcon.py", line 537, in <module>
+    main()
+  File "./v30_wildlife_supcon.py", line 525, in main
+    phase1_extract_wildlife()
+  File "./v30_wildlife_supcon.py", line 232, in phase1_extract_wildlife
+    model, transform = load_model_and_transform(model_name, model_dir)
+                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "./v30_wildlife_supcon.py", line 144, in load_model_and_transform
+    raise RuntimeError(f"Cannot load DINOv3 from {model_dir}")
+RuntimeError: Cannot load DINOv3 from ./models/dinov3-vit7b

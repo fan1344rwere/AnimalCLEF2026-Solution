@@ -1,0 +1,104 @@
+Device: cuda
+GPU: NVIDIA GeForce RTX 5090, VRAM: 31.4GB
+============================================================
+PHASE 1: Loading cached features
+============================================================
+Competition: 15483 images, Submission: 2409 rows
+  dinov3: (15483, 4096)
+  WARNING: internvit not found at ./feat_cache/internvit_features.npz
+  siglip2: (15483, 1536)
+  eva02: (15483, 1024)
+  megadesc_l384: (15483, 1536)
+  megadesc_dinov2: (15483, 1024)
+
+Wildlife: 140488 images, 10772 identities
+  wildlife dinov3: (140488, 4096)
+  wildlife siglip2: (140488, 1536)
+  wildlife eva02: (140488, 1024)
+  OK: dinov3 dim=4096 matches
+  OK: siglip2 dim=1536 matches
+  OK: eva02 dim=1024 matches
+
+Available for SupCon: ['dinov3', 'siglip2', 'eva02']
+
+============================================================
+PHASE 2: Train SupCon on WildlifeReID-10k
+============================================================
+Loading saved SupCon model: ./ov22w/supcon_wildlife_proj.pth
+
+============================================================
+PHASE 3: Per-species fine-tune + Clustering
+============================================================
+Competition concatenated: (15483, 6656)
+  megadesc_l384: (15483, 1536)
+  megadesc_dinov2: (15483, 1024)
+
+==================================================
+Processing: LynxID2025
+==================================================
+  Train: 2957, Test: 946
+  Fine-tuning SupCon on LynxID2025 (init from wildlife pretrained)...
+    2957 images, 77 identities, 71 with 2+ images
+  PKSampler: 71 valid labels (of 77 total)
+    FT Epoch 10/30: loss=1.3241 (best=1.3241)
+    FT Epoch 20/30: loss=0.7500 (best=0.7500)
+    FT Epoch 30/30: loss=0.6007 (best=0.6007)
+  Searching ensemble weights...
+    Subsampled 2000/2957 for grid search
+  Best ensemble: supcon=0.80, mega_l384=0.00, mega_dinov2=0.20
+  Best threshold: 0.300 (train ARI=0.4169)
+  Final Train ARI: 0.4046
+  Test: 946 -> 91 clusters, 34 singletons (4%)
+
+==================================================
+Processing: SalamanderID2025
+==================================================
+  Train: 1388, Test: 689
+  Fine-tuning SupCon on SalamanderID2025 (init from wildlife pretrained)...
+    1388 images, 587 identities, 277 with 2+ images
+  PKSampler: 277 valid labels (of 587 total)
+    FT Epoch 10/30: loss=2.0992 (best=2.0724)
+    FT Epoch 20/30: loss=1.2117 (best=1.2117)
+    FT Epoch 30/30: loss=1.0037 (best=0.9398)
+  Searching ensemble weights...
+  Best ensemble: supcon=0.60, mega_l384=0.00, mega_dinov2=0.40
+  Best threshold: 0.150 (train ARI=0.3116)
+  Final Train ARI: 0.0624
+  Test: 689 -> 242 clusters, 118 singletons (17%)
+
+==================================================
+Processing: SeaTurtleID2022
+==================================================
+  Train: 8729, Test: 500
+  Fine-tuning SupCon on SeaTurtleID2022 (init from wildlife pretrained)...
+    8729 images, 438 identities, 437 with 2+ images
+  PKSampler: 437 valid labels (of 438 total)
+    FT Epoch 10/30: loss=0.5463 (best=0.5463)
+    FT Epoch 20/30: loss=0.3338 (best=0.3338)
+    FT Epoch 30/30: loss=0.2847 (best=0.2813)
+  Searching ensemble weights...
+    Subsampled 2000/8729 for grid search
+  Best ensemble: supcon=0.60, mega_l384=0.00, mega_dinov2=0.40
+  Best threshold: 0.150 (train ARI=0.4902)
+  Final Train ARI: 0.4353
+  Test: 500 -> 110 clusters, 24 singletons (5%)
+
+==================================================
+Processing: TexasHornedLizards
+==================================================
+  Train: 0, Test: 274
+  No train data, transferring projection head...
+  Using fine-tuned head from SeaTurtleID2022
+  No train data, using: supcon=0.4, mega_l384=0.3, mega_dinov2=0.3, th=0.150
+  Test: 274 -> 4 clusters, 1 singletons (0%)
+
+============================================================
+V22W COMPLETE - 1.6 minutes
+============================================================
+  LynxID2025: ARI=0.4046, clusters=91, singletons=34, w=(0.80,0.00,0.20), th=0.300
+  SalamanderID2025: ARI=0.0624, clusters=242, singletons=118, w=(0.60,0.00,0.40), th=0.150
+  SeaTurtleID2022: ARI=0.4353, clusters=110, singletons=24, w=(0.60,0.00,0.40), th=0.150
+  TexasHornedLizards: ARI=N/A, clusters=4, singletons=1, w=(0.40,0.30,0.30), th=0.150
+
+Submission: ./ov22w/submission.csv
+============================================================

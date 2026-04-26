@@ -1,0 +1,249 @@
+======================================================================
+  V20 — LOCAL-PRIMARY PIPELINE (Complete Paradigm Shift)
+======================================================================
+  GPU: NVIDIA GeForce RTX 5090 | 34GB
+  13074 train + 2409 test = 15483 total
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+STAGE 1: Global Features (candidate retrieval only)
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  [M] MegaDescriptor dim=1536
+
+  [...progress...]
+                                                             
+
+  [...progress...]
+                                                                 
+  [M] MiewID dim=2152
+
+  [...progress...]
+                                                             
+
+  [...progress...]
+                                                                 
+Using cache found in ./.cache/torch/hub/facebookresearch_dinov2_main
+  [M] DINOv2-L-reg dim=1024
+
+  [...progress...]
+                                                             
+
+  [...progress...]
+                                                                 
+  Features: ['mega', 'miew', 'dino'] | 20.5min
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+STAGE 2: Local Feature Matcher (THE primary signal)
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  [L] ALIKED+LightGlue OK (kp=1024)
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+STAGE 3: Per-species Graph-based Pipeline
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+  ═══════════════════════════════════════════════════════
+  LynxID2025
+  ═══════════════════════════════════════════════════════
+  2957 train (77 ids) + 946 test
+  [A] Global candidate retrieval (top-40)...
+    30000 candidate pairs (from 3903 images)
+  [B] Local matching (PRIMARY signal)...
+    [LynxID20] Extracting 2660 keypoints...
+
+  [...progress...]
+                                                           
+    [LynxID20] Matching 30000 pairs...
+
+  [...progress...]
+                                                                
+  [C] Score calibration (isotonic regression)...
+    Calibration: 60000 pairs (20152 same, 39848 diff)
+    Score range: [0.0, 745.4]
+  [D] Building similarity graph...
+    30000 graph edges
+  [E] Graph clustering (Louvain)...
+    Best resolution=0.5, train ARI=0.1398
+  → 946 images → 281 clusters, singletons=254 (90%)
+  Train ARI = 0.1398
+
+  ═══════════════════════════════════════════════════════
+  SalamanderID2025
+  ═══════════════════════════════════════════════════════
+  1388 train (587 ids) + 689 test
+  [A] Global candidate retrieval (top-40)...
+    30000 candidate pairs (from 2077 images)
+  [B] Local matching (PRIMARY signal)...
+    [Salamand] Extracting 1899 keypoints...
+
+  [...progress...]
+                                                           
+    [Salamand] Matching 30000 pairs...
+
+  [...progress...]
+                                                                 
+  [C] Score calibration (isotonic regression)...
+    Calibration: 60000 pairs (8140 same, 51860 diff)
+    Score range: [0.0, 898.1]
+  [D] Building similarity graph...
+    30000 graph edges
+  [E] Graph clustering (Louvain)...
+    Best resolution=5.0, train ARI=0.0168
+  → 689 images → 117 clusters, singletons=73 (62%)
+  Train ARI = 0.0168
+
+  ═══════════════════════════════════════════════════════
+  SeaTurtleID2022
+  ═══════════════════════════════════════════════════════
+  8729 train (438 ids) + 500 test
+  [A] Global candidate retrieval (top-40)...
+    30000 candidate pairs (from 9229 images)
+  [B] Local matching (PRIMARY signal)...
+    [SeaTurtl] Extracting 4290 keypoints...
+
+  [...progress...]
+                                                           
+    [SeaTurtl] Matching 30000 pairs...
+
+  [...progress...]
+                                                                 
+  [C] Score calibration (isotonic regression)...
+    Calibration: 60000 pairs (59634 same, 366 diff)
+    Score range: [0.0, 947.1]
+  [D] Building similarity graph...
+    97871 graph edges
+  [E] Graph clustering (Louvain)...
+    Best resolution=5.0, train ARI=0.8021
+  → 500 images → 401 clusters, singletons=347 (87%)
+  Train ARI = 0.8021
+
+  ═══════════════════════════════════════════════════════
+  TexasHornedLizards
+  ═══════════════════════════════════════════════════════
+  No training data, 274 test images
+  [A] Global candidate retrieval (top-40)...
+    7662 candidate pairs (from 274 images)
+  [B] Local matching (PRIMARY signal)...
+    [TexasHor] Extracting 274 keypoints...
+
+  [...progress...]
+                                                         
+    [TexasHor] Matching 7662 pairs...
+
+  [...progress...]
+                                                               
+  [C] No training data, normalizing scores...
+  [D] Building similarity graph...
+    7662 graph edges
+  [E] Graph clustering (Louvain)...
+    Best resolution=3.0 (target ratio ~0.35)
+  → 274 images → 33 clusters, singletons=11 (33%)
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+STAGE 4: Submission
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+... [progress bars truncated] ...
+
+    [LynxID20] Extracting 2660 keypoints...
+
+  [...progress...]
+                                                           
+    [LynxID20] Matching 30000 pairs...
+
+  [...progress...]
+                                                                
+  [C] Score calibration (isotonic regression)...
+    Calibration: 60000 pairs (20152 same, 39848 diff)
+    Score range: [0.0, 745.4]
+  [D] Building similarity graph...
+    30000 graph edges
+  [E] Graph clustering (Louvain)...
+    Best resolution=0.5, train ARI=0.1398
+  → 946 images → 281 clusters, singletons=254 (90%)
+  Train ARI = 0.1398
+
+  ═══════════════════════════════════════════════════════
+  SalamanderID2025
+  ═══════════════════════════════════════════════════════
+  1388 train (587 ids) + 689 test
+  [A] Global candidate retrieval (top-40)...
+    30000 candidate pairs (from 2077 images)
+  [B] Local matching (PRIMARY signal)...
+    [Salamand] Extracting 1899 keypoints...
+
+  [...progress...]
+                                                           
+    [Salamand] Matching 30000 pairs...
+
+  [...progress...]
+                                                                 
+  [C] Score calibration (isotonic regression)...
+    Calibration: 60000 pairs (8140 same, 51860 diff)
+    Score range: [0.0, 898.1]
+  [D] Building similarity graph...
+    30000 graph edges
+  [E] Graph clustering (Louvain)...
+    Best resolution=5.0, train ARI=0.0168
+  → 689 images → 117 clusters, singletons=73 (62%)
+  Train ARI = 0.0168
+
+  ═══════════════════════════════════════════════════════
+  SeaTurtleID2022
+  ═══════════════════════════════════════════════════════
+  8729 train (438 ids) + 500 test
+  [A] Global candidate retrieval (top-40)...
+    30000 candidate pairs (from 9229 images)
+  [B] Local matching (PRIMARY signal)...
+    [SeaTurtl] Extracting 4290 keypoints...
+
+  [...progress...]
+                                                           
+    [SeaTurtl] Matching 30000 pairs...
+
+  [...progress...]
+                                                                 
+  [C] Score calibration (isotonic regression)...
+    Calibration: 60000 pairs (59634 same, 366 diff)
+    Score range: [0.0, 947.1]
+  [D] Building similarity graph...
+    97871 graph edges
+  [E] Graph clustering (Louvain)...
+    Best resolution=5.0, train ARI=0.8021
+  → 500 images → 401 clusters, singletons=347 (87%)
+  Train ARI = 0.8021
+
+  ═══════════════════════════════════════════════════════
+  TexasHornedLizards
+  ═══════════════════════════════════════════════════════
+  No training data, 274 test images
+  [A] Global candidate retrieval (top-40)...
+    7662 candidate pairs (from 274 images)
+  [B] Local matching (PRIMARY signal)...
+    [TexasHor] Extracting 274 keypoints...
+
+  [...progress...]
+                                                         
+    [TexasHor] Matching 7662 pairs...
+
+  [...progress...]
+                                                               
+  [C] No training data, normalizing scores...
+  [D] Building similarity graph...
+    7662 graph edges
+  [E] Graph clustering (Louvain)...
+    Best resolution=3.0 (target ratio ~0.35)
+  → 274 images → 33 clusters, singletons=11 (33%)
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+STAGE 4: Submission
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  Output: ./output/submission.csv
+  Rows: 2409, Clusters: 832
+    LynxID2025                 946 imgs,  281 cl, max_cl=237, sing=254(90%)
+    SalamanderID2025           689 imgs,  117 cl, max_cl=65, sing=73(62%)
+    SeaTurtleID2022            500 imgs,  401 cl, max_cl=5, sing=347(87%)
+    TexasHornedLizards         274 imgs,   33 cl, max_cl=33, sing=11(33%)
+
+  Time: 47.2min
+======================================================================
+  DONE!
+======================================================================

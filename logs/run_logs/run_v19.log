@@ -1,0 +1,219 @@
+======================================================================
+  AnimalCLEF2026 V19 — Orientation-Aware Breakthrough for Top5
+======================================================================
+  GPU: NVIDIA GeForce RTX 5090 | 34GB
+  Data: 13074 train, 2409 test
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+STAGE 1: Feature Extraction (3 Backbones + TTA)
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  [Model] MegaDescriptor-L-384 OK dim=1536
+
+  [...progress...]
+                                                             
+
+  [...progress...]
+                                                                 
+  [Model] MiewID-MSV3 OK dim=2152
+
+  [...progress...]
+                                                             
+
+  [...progress...]
+                                                                 
+Using cache found in ./.cache/torch/hub/facebookresearch_dinov2_main
+  [Model] DINOv2-ViT-L-reg OK dim=1024
+
+  [...progress...]
+                                                             
+
+  [...progress...]
+                                                                 
+  Models: ['mega', 'miew', 'dino'] | Elapsed: 18.3min
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+STAGE 2: Local Feature Matcher
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  [Local] ALIKED+LightGlue OK (max_kp=1024)
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+STAGE 3: Per-Species Orientation-Aware Pipeline
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+  ═══════════════════════════════════════════════════════
+  LynxID2025
+  ═══════════════════════════════════════════════════════
+    2957 train (77 ids), 946 test
+    train orientations: {'left': np.int64(1258), 'right': np.int64(1175), 'unknown': np.int64(230), 'front': np.int64(163), 'back': np.int64(131)}
+    test orientations: {'right': np.int64(440), 'left': np.int64(418), 'front': np.int64(37), 'back': np.int64(36), 'unknown': np.int64(15)}
+
+    [A] Searching model weights (orientation-aware)...
+        Weights: {'mega': np.float64(1.0), 'miew': np.float64(0.0), 'dino': np.float64(0.0)}
+        Train ARI (orient-aware): 0.1233
+
+    [B] Searching thresholds...
+      Orientation mask applied: 25 rules, avg_factor=0.505
+      Train clustering ARI=0.1153 th=0.690
+      Representative matching: 649/916 assigned (threshold=0.150)
+      Representative matching: 649/916 assigned (threshold=0.200)
+      Representative matching: 642/916 assigned (threshold=0.250)
+      Representative matching: 634/916 assigned (threshold=0.300)
+      Representative matching: 613/916 assigned (threshold=0.350)
+      Representative matching: 575/916 assigned (threshold=0.400)
+      Representative matching: 517/916 assigned (threshold=0.450)
+      Representative matching: 460/916 assigned (threshold=0.500)
+      Representative matching: 380/916 assigned (threshold=0.550)
+      Representative matching: 323/916 assigned (threshold=0.600)
+      Representative matching: 653/916 assigned (threshold=0.150)
+      Representative matching: 652/916 assigned (threshold=0.200)
+      Representative matching: 650/916 assigned (threshold=0.250)
+      Representative matching: 640/916 assigned (threshold=0.300)
+      Representative matching: 619/916 assigned (threshold=0.350)
+      Representative matching: 575/916 assigned (threshold=0.400)
+      Representative matching: 534/916 assigned (threshold=0.450)
+      Representative matching: 481/916 assigned (threshold=0.500)
+      Representative matching: 398/916 assigned (threshold=0.550)
+      Representative matching: 325/916 assigned (threshold=0.600)
+      Representative matching: 637/916 assigned (threshold=0.150)
+      Representative matching: 637/916 assigned (threshold=0.200)
+      Representative matching: 636/916 assigned (threshold=0.250)
+      Representative matching: 623/916 assigned (threshold=0.300)
+      Representative matching: 600/916 assigned (threshold=0.350)
+      Representative matching: 565/916 assigned (threshold=0.400)
+      Representative matching: 530/916 assigned (threshold=0.450)
+      Representative matching: 473/916 assigned (threshold=0.500)
+      Representative matching: 403/916 assigned (threshold=0.550)
+      Representative matching: 309/916 assigned (threshold=0.600)
+      Representative matching ARI=0.3697 assign_th=0.250
+
+    [C] Representative matching...
+      Representative matching: 475/946 assigned (threshold=0.250)
+
+    [D] Local matching verification...
+      Verifying 489 uncertain assignments...
+      After local verification: 550/946 assigned
+
+    [E] Hybrid clustering (assigned + discovery)...
+      Assigned: 550, New (to cluster): 396
+      Orientation mask applied: 25 rules, avg_factor=0.523
+      Running local matching for 396 new images...
+      new Extracting keypoints for 395 images...
+
+  [...progress...]
+                                                               
+      new Matching 8092 pairs...
+
+  [...progress...]
+                                                                    
+      Local fusion applied (beta=0.3)
+      New clusters: 138
+
+    Summary: 946 images → 181 clusters
+
+  ═══════════════════════════════════════════════════════
+  SalamanderID2025
+  ═══════════════════════════════════════════════════════
+    1388 train (587 ids), 689 test
+    train orientations: {'top': np.int64(784), 'right': np.int64(600), 'bottom': np.int64(3), 'left': np.int64(1)}
+    test orientations: {'top': np.int64(391), 'right': np.int64(296), 'left': np.int64(2)}
+
+    [A] Searching model weights (orientation-aware)...
+        Weights: {'mega': np.float64(0.2), 'miew': np.float64(0.0), 'dino': np.float64(0.8)}
+        Train ARI (orient-aware): 0.1217
+
+    [B] Searching thresholds...
+
+... [progress bars truncated] ...
+
+        Train ARI (orient-aware): 0.8549
+
+    [B] Searching thresholds...
+      Train clustering ARI=0.8593 th=0.430
+      Representative matching: 2567/2810 assigned (threshold=0.150)
+      Representative matching: 2567/2810 assigned (threshold=0.200)
+      Representative matching: 2567/2810 assigned (threshold=0.250)
+      Representative matching: 2567/2810 assigned (threshold=0.300)
+      Representative matching: 2567/2810 assigned (threshold=0.350)
+      Representative matching: 2566/2810 assigned (threshold=0.400)
+      Representative matching: 2561/2810 assigned (threshold=0.450)
+      Representative matching: 2543/2810 assigned (threshold=0.500)
+      Representative matching: 2491/2810 assigned (threshold=0.550)
+      Representative matching: 2386/2810 assigned (threshold=0.600)
+      Representative matching: 2589/2810 assigned (threshold=0.150)
+      Representative matching: 2589/2810 assigned (threshold=0.200)
+      Representative matching: 2589/2810 assigned (threshold=0.250)
+      Representative matching: 2589/2810 assigned (threshold=0.300)
+      Representative matching: 2589/2810 assigned (threshold=0.350)
+      Representative matching: 2588/2810 assigned (threshold=0.400)
+      Representative matching: 2582/2810 assigned (threshold=0.450)
+      Representative matching: 2567/2810 assigned (threshold=0.500)
+      Representative matching: 2509/2810 assigned (threshold=0.550)
+      Representative matching: 2414/2810 assigned (threshold=0.600)
+      Representative matching: 2575/2810 assigned (threshold=0.150)
+      Representative matching: 2575/2810 assigned (threshold=0.200)
+      Representative matching: 2575/2810 assigned (threshold=0.250)
+      Representative matching: 2575/2810 assigned (threshold=0.300)
+      Representative matching: 2575/2810 assigned (threshold=0.350)
+      Representative matching: 2573/2810 assigned (threshold=0.400)
+      Representative matching: 2566/2810 assigned (threshold=0.450)
+      Representative matching: 2544/2810 assigned (threshold=0.500)
+      Representative matching: 2483/2810 assigned (threshold=0.550)
+      Representative matching: 2373/2810 assigned (threshold=0.600)
+      Representative matching ARI=0.8738 assign_th=0.600
+
+    [C] Representative matching...
+      Representative matching: 257/500 assigned (threshold=0.600)
+
+    [D] Local matching verification...
+      Verifying 355 uncertain assignments...
+      After local verification: 228/500 assigned
+
+    [E] Hybrid clustering (assigned + discovery)...
+      Assigned: 228, New (to cluster): 272
+      Running local matching for 272 new images...
+      new Extracting keypoints for 272 images...
+
+  [...progress...]
+                                                               
+      new Matching 5078 pairs...
+
+  [...progress...]
+                                                                     
+      Local fusion applied (beta=0.3)
+      New clusters: 246
+
+    Summary: 500 images → 335 clusters
+
+  ═══════════════════════════════════════════════════════
+  TexasHornedLizards
+  ═══════════════════════════════════════════════════════
+    No training data, 274 test images
+    Using pure test clustering with local matching
+    Local matching for all test images...
+      Texas Extracting keypoints for 274 images...
+
+  [...progress...]
+                                                                 
+      Texas Matching 5830 pairs...
+
+  [...progress...]
+                                                                       
+    Local fusion (beta=0.4)
+    → 106 clusters (th=0.550)
+
+    Summary: 274 images → 106 clusters
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+STAGE 4: Submission
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  Output: ./output/submission.csv
+  Rows: 2409, Unique clusters: 1263
+    LynxID2025                 946 imgs,  181 cl, singletons=90 (50%)
+    SalamanderID2025           689 imgs,  641 cl, singletons=609 (95%)
+    SeaTurtleID2022            500 imgs,  335 cl, singletons=260 (78%)
+    TexasHornedLizards         274 imgs,  106 cl, singletons=47 (44%)
+
+  Total time: 57.7 min
+======================================================================
+  DONE! Ready for submission.
+======================================================================

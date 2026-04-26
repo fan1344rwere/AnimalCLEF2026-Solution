@@ -1,0 +1,116 @@
+Device: cuda
+GPU: NVIDIA GeForce RTX 5090, VRAM: 31.4GB
+======================================================================
+AnimalCLEF2026 V23: Semi-Supervised + t-SNE + HDBSCAN
+======================================================================
+Metadata: 15483 rows, Submission: 2409 rows
+
+======================================================================
+STAGE 0: Feature Extraction (4 Backbones)
+======================================================================
+  [SKIP] BioCLIP 2.5 not ready (still downloading?), skipping
+  Loading cached dinov3 features...
+    dinov3: (15483, 8192)
+  Loading cached siglip2 features...
+    siglip2: (15483, 1536)
+  Loading cached megadesc features...
+    megadesc: (15483, 1536)
+
+  Successfully loaded 3 backbones: ['dinov3', 'siglip2', 'megadesc']
+
+Concatenating features from: ['dinov3', 'megadesc', 'siglip2']
+Concatenated feature dim: 11264
+
+======================================================================
+STAGE 1: Per-Species Semi-Supervised Learning
+======================================================================
+
+==================================================
+Species: LynxID2025
+==================================================
+  Train: 2957, Test: 946
+  Known identities: 77
+
+  Phase A: SupCon on labeled training data
+    Epoch 5/30: loss=1.8679
+    Epoch 10/30: loss=1.4878
+    Epoch 15/30: loss=1.3151
+    Epoch 20/30: loss=1.2365
+    Epoch 25/30: loss=1.2087
+    Epoch 30/30: loss=1.1796
+    PCA→64D (var=0.983)
+  Train ARI after Phase A: 0.5781
+
+  Final clustering for LynxID2025
+    PCA→64D (var=0.981)
+
+  LynxID2025 Final: 946 images → 118 clusters
+    Singletons: 7 (6%)
+    Largest cluster: 39
+
+==================================================
+Species: SalamanderID2025
+==================================================
+  Train: 1388, Test: 689
+  Known identities: 587
+
+  Phase A: SupCon on labeled training data
+    Epoch 5/30: loss=2.5349
+    Epoch 10/30: loss=1.7986
+    Epoch 15/30: loss=1.4525
+    Epoch 20/30: loss=1.3269
+    Epoch 25/30: loss=1.2398
+    Epoch 30/30: loss=1.1988
+    PCA→64D (var=0.968)
+  Train ARI after Phase A: 0.6107
+
+  Final clustering for SalamanderID2025
+    PCA→64D (var=0.966)
+
+  SalamanderID2025 Final: 689 images → 259 clusters
+    Singletons: 79 (31%)
+    Largest cluster: 10
+
+==================================================
+Species: SeaTurtleID2022
+==================================================
+  Train: 8729, Test: 500
+  Known identities: 438
+
+  Phase A: SupCon on labeled training data
+    Epoch 5/30: loss=1.3666
+    Epoch 10/30: loss=1.2112
+    Epoch 15/30: loss=1.1605
+    Epoch 20/30: loss=1.1423
+    Epoch 25/30: loss=1.1345
+    Epoch 30/30: loss=1.1313
+    PCA→64D (var=0.984)
+  Train ARI after Phase A: 0.9700
+
+  Final clustering for SeaTurtleID2022
+    PCA→64D (var=0.984)
+
+  SeaTurtleID2022 Final: 500 images → 160 clusters
+    Singletons: 47 (29%)
+    Largest cluster: 12
+
+==================================================
+Species: TexasHornedLizards
+==================================================
+  Train: 0, Test: 274
+  Zero-shot clustering (no training data)
+  t-SNE reduction for zero-shot clustering
+    PCA→64D (var=0.833)
+
+  TexasHornedLizards Final: 274 images → 34 clusters
+    Singletons: 0 (0%)
+    Largest cluster: 34
+
+======================================================================
+STAGE 4: Generating Submission
+======================================================================
+Submission saved to ./output/submission.csv
+Total: 2409 images, 571 unique clusters
+
+Total time: 1.2 minutes
+Done!

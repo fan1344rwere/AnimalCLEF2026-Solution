@@ -1,0 +1,201 @@
+============================================================
+  V18 — Joint Train+Test Clustering
+============================================================
+  GPU: NVIDIA GeForce RTX 5090 | 34GB
+  13074 train, 2409 test
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+STAGE 1: Features
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+[M] Mega dim=1536
+
+  [...progress...]
+                                                         
+
+  [...progress...]
+                                                            
+[M] Miew dim=2152
+
+  [...progress...]
+                                                         
+
+  [...progress...]
+                                                            
+Using cache found in ./.cache/torch/hub/facebookresearch_dinov2_main
+[M] DINOv2-L-reg dim=1024
+
+  [...progress...]
+                                                         
+
+  [...progress...]
+                                                            
+  Models: ['mega', 'miew', 'dino'] | 18.7min
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+STAGE 2: Joint Train+Test Clustering
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+  ════════════════════════════════════════ LynxID2025
+    2957 train (77 ids) + 946 test
+      Sampled 594/2957 train images
+    cs=0.0: th=0.450 train_ARI=0.1059 → 305 test clusters
+      Sampled 594/2957 train images
+    cs=0.1: th=0.500 train_ARI=0.1518 → 222 test clusters
+      Sampled 594/2957 train images
+    cs=0.2: th=0.480 train_ARI=0.2516 → 258 test clusters
+      Sampled 594/2957 train images
+    cs=0.3: th=0.490 train_ARI=0.3931 → 233 test clusters
+      Sampled 594/2957 train images
+    cs=0.5: th=0.450 train_ARI=0.8555 → 295 test clusters
+      Sampled 594/2957 train images
+    cs=0.7: th=0.280 train_ARI=0.9842 → 640 test clusters
+    ★ Best: cs=0.7 th=0.280 ARI=0.9842 → 640 clusters
+
+  ════════════════════════════════════════ SalamanderID2025
+    1388 train (587 ids) + 689 test
+      Sampled 864/1388 train images
+    cs=0.0: th=0.080 train_ARI=0.1410 → 631 test clusters
+      Sampled 864/1388 train images
+    cs=0.1: th=0.100 train_ARI=0.1743 → 565 test clusters
+      Sampled 864/1388 train images
+    cs=0.2: th=0.100 train_ARI=0.2299 → 574 test clusters
+      Sampled 864/1388 train images
+    cs=0.3: th=0.110 train_ARI=0.2807 → 530 test clusters
+      Sampled 864/1388 train images
+    cs=0.5: th=0.120 train_ARI=0.5034 → 486 test clusters
+      Sampled 864/1388 train images
+    cs=0.7: th=0.110 train_ARI=0.8953 → 517 test clusters
+    ★ Best: cs=0.7 th=0.110 ARI=0.8953 → 517 clusters
+
+  ════════════════════════════════════════ SeaTurtleID2022
+    8729 train (438 ids) + 500 test
+      Sampled 875/8729 train images
+    cs=0.0: th=0.330 train_ARI=0.6664 → 269 test clusters
+      Sampled 875/8729 train images
+    cs=0.1: th=0.350 train_ARI=0.7403 → 250 test clusters
+      Sampled 875/8729 train images
+    cs=0.2: th=0.390 train_ARI=0.8315 → 207 test clusters
+      Sampled 875/8729 train images
+    cs=0.3: th=0.410 train_ARI=0.8877 → 186 test clusters
+      Sampled 875/8729 train images
+    cs=0.5: th=0.400 train_ARI=0.9861 → 189 test clusters
+      Sampled 875/8729 train images
+    cs=0.7: th=0.240 train_ARI=0.9931 → 348 test clusters
+    ★ Best: cs=0.7 th=0.240 ARI=0.9931 → 348 clusters
+
+  ════════════════════════════════════════ TexasHornedLizards
+    274 test (no training data)
+    → 103 clusters (th=0.250)
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+STAGE 3: Submission
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  ./output/submission.csv
+  Rows=2409 Clusters=1608
+    LynxID2025                 946 imgs, 640 cl
+    SalamanderID2025           689 imgs, 517 cl
+    SeaTurtleID2022            500 imgs, 348 cl
+    TexasHornedLizards         274 imgs, 103 cl
+  Time: 20.4min
+DONE!
+
+... [progress bars truncated] ...
+
+============================================================
+  GPU: NVIDIA GeForce RTX 5090 | 34GB
+  13074 train, 2409 test
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+STAGE 1: Features
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+[M] Mega dim=1536
+
+  [...progress...]
+                                                         
+
+  [...progress...]
+                                                            
+[M] Miew dim=2152
+
+  [...progress...]
+                                                         
+
+  [...progress...]
+                                                            
+Using cache found in ./.cache/torch/hub/facebookresearch_dinov2_main
+[M] DINOv2-L-reg dim=1024
+
+  [...progress...]
+                                                         
+
+  [...progress...]
+                                                            
+  Models: ['mega', 'miew', 'dino'] | 18.7min
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+STAGE 2: Joint Train+Test Clustering
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+  ════════════════════════════════════════ LynxID2025
+    2957 train (77 ids) + 946 test
+      Sampled 594/2957 train images
+    cs=0.0: th=0.450 train_ARI=0.1059 → 305 test clusters
+      Sampled 594/2957 train images
+    cs=0.1: th=0.500 train_ARI=0.1518 → 222 test clusters
+      Sampled 594/2957 train images
+    cs=0.2: th=0.480 train_ARI=0.2516 → 258 test clusters
+      Sampled 594/2957 train images
+    cs=0.3: th=0.490 train_ARI=0.3931 → 233 test clusters
+      Sampled 594/2957 train images
+    cs=0.5: th=0.450 train_ARI=0.8555 → 295 test clusters
+      Sampled 594/2957 train images
+    cs=0.7: th=0.280 train_ARI=0.9842 → 640 test clusters
+    ★ Best: cs=0.7 th=0.280 ARI=0.9842 → 640 clusters
+
+  ════════════════════════════════════════ SalamanderID2025
+    1388 train (587 ids) + 689 test
+      Sampled 864/1388 train images
+    cs=0.0: th=0.080 train_ARI=0.1410 → 631 test clusters
+      Sampled 864/1388 train images
+    cs=0.1: th=0.100 train_ARI=0.1743 → 565 test clusters
+      Sampled 864/1388 train images
+    cs=0.2: th=0.100 train_ARI=0.2299 → 574 test clusters
+      Sampled 864/1388 train images
+    cs=0.3: th=0.110 train_ARI=0.2807 → 530 test clusters
+      Sampled 864/1388 train images
+    cs=0.5: th=0.120 train_ARI=0.5034 → 486 test clusters
+      Sampled 864/1388 train images
+    cs=0.7: th=0.110 train_ARI=0.8953 → 517 test clusters
+    ★ Best: cs=0.7 th=0.110 ARI=0.8953 → 517 clusters
+
+  ════════════════════════════════════════ SeaTurtleID2022
+    8729 train (438 ids) + 500 test
+      Sampled 875/8729 train images
+    cs=0.0: th=0.330 train_ARI=0.6664 → 269 test clusters
+      Sampled 875/8729 train images
+    cs=0.1: th=0.350 train_ARI=0.7403 → 250 test clusters
+      Sampled 875/8729 train images
+    cs=0.2: th=0.390 train_ARI=0.8315 → 207 test clusters
+      Sampled 875/8729 train images
+    cs=0.3: th=0.410 train_ARI=0.8877 → 186 test clusters
+      Sampled 875/8729 train images
+    cs=0.5: th=0.400 train_ARI=0.9861 → 189 test clusters
+      Sampled 875/8729 train images
+    cs=0.7: th=0.240 train_ARI=0.9931 → 348 test clusters
+    ★ Best: cs=0.7 th=0.240 ARI=0.9931 → 348 clusters
+
+  ════════════════════════════════════════ TexasHornedLizards
+    274 test (no training data)
+    → 103 clusters (th=0.250)
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+STAGE 3: Submission
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  ./output/submission.csv
+  Rows=2409 Clusters=1608
+    LynxID2025                 946 imgs, 640 cl
+    SalamanderID2025           689 imgs, 517 cl
+    SeaTurtleID2022            500 imgs, 348 cl
+    TexasHornedLizards         274 imgs, 103 cl
+  Time: 20.4min
+DONE!

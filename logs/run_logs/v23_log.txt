@@ -1,0 +1,97 @@
+Device: cuda
+GPU: NVIDIA GeForce RTX 5090, VRAM: 31.4GB
+============================================================
+PHASE 1: Loading cached features
+============================================================
+Competition: 15483 images, Submission: 2409 rows
+  dinov3: (15483, 4096)
+  siglip2: (15483, 1536)
+  eva02: (15483, 1024)
+  megadesc_l384: (15483, 1536)
+  megadesc_dinov2: (15483, 1024)
+
+Backbones: ['dinov3', 'siglip2', 'eva02', 'megadesc_l384', 'megadesc_dinov2']
+Dims: {'dinov3': 4096, 'siglip2': 1536, 'eva02': 1024, 'megadesc_l384': 1536, 'megadesc_dinov2': 1024}, total=9216
+
+============================================================
+PHASE 2: Per-Species SupCon + Clustering
+============================================================
+
+==================================================
+Processing: LynxID2025
+==================================================
+  Train: 2957, Test: 946
+
+  Training SupCon for LynxID2025...
+    2957 imgs, 77 ids, 71 with 2+ imgs, dim=9216
+    Epoch 10/50: loss=2.5762 (best=2.5005)
+    Epoch 20/50: loss=2.0736 (best=1.9767)
+    Epoch 30/50: loss=1.8401 (best=1.5772)
+    Epoch 40/50: loss=1.5997 (best=1.0628)
+    Epoch 50/50: loss=1.5100 (best=1.0628)
+    Best loss: 1.0628
+    SupCon projected train ARI: 0.2447
+  Ensemble: supcon=0.70, each_mega=0.15, th=0.230, ARI=0.2600
+  Clustering...
+    Best threshold: 0.230 (train ARI=0.2600)
+  Final Train ARI: 0.2188
+  Test: 946 -> 53 clusters, 13 singletons (1%)
+
+==================================================
+Processing: SalamanderID2025
+==================================================
+  Train: 1388, Test: 689
+
+  Training SupCon for SalamanderID2025...
+    1388 imgs, 587 ids, 277 with 2+ imgs, dim=9216
+    Epoch 10/50: loss=1.4376 (best=1.4376)
+    Epoch 20/50: loss=0.4558 (best=0.4558)
+    Epoch 30/50: loss=0.2560 (best=0.2308)
+    Epoch 40/50: loss=0.0965 (best=0.0965)
+    Epoch 50/50: loss=0.1123 (best=0.0617)
+    Best loss: 0.0617
+    SupCon projected train ARI: 0.8272
+  Ensemble: supcon=1.00, each_mega=-0.00, th=0.290, ARI=0.8223
+  Clustering...
+    Best threshold: 0.310 (train ARI=0.8272)
+  Final Train ARI: 0.8073
+  Test: 689 -> 501 clusters, 388 singletons (56%)
+
+==================================================
+Processing: SeaTurtleID2022
+==================================================
+  Train: 8729, Test: 500
+
+  Training SupCon for SeaTurtleID2022...
+    8729 imgs, 438 ids, 437 with 2+ imgs, dim=9216
+    Epoch 10/50: loss=2.2534 (best=2.2534)
+    Epoch 20/50: loss=1.6034 (best=1.6034)
+    Epoch 30/50: loss=1.4338 (best=1.3457)
+    Epoch 40/50: loss=1.1012 (best=1.1012)
+    Epoch 50/50: loss=1.0870 (best=1.0787)
+    Best loss: 1.0787
+    SupCon projected train ARI: 0.2381
+  Ensemble: supcon=1.00, each_mega=-0.00, th=0.200, ARI=0.2326
+  Clustering...
+    Best threshold: 0.250 (train ARI=0.2353)
+  Final Train ARI: 0.2342
+  Test: 500 -> 162 clusters, 58 singletons (12%)
+
+==================================================
+Processing: TexasHornedLizards
+==================================================
+  Train: 0, Test: 274
+  No training data, using transferred head
+  Transferring from SeaTurtleID2022
+  Clustering...
+  Test: 274 -> 1 clusters, 0 singletons (0%)
+
+============================================================
+V23 COMPLETE - 3.2 minutes
+============================================================
+  LynxID2025: ARI=0.2188, clusters=53, singletons=13
+  SalamanderID2025: ARI=0.8073, clusters=501, singletons=388
+  SeaTurtleID2022: ARI=0.2342, clusters=162, singletons=58
+  TexasHornedLizards: ARI=N/A, clusters=1, singletons=0
+
+Submission: ./ov23/submission.csv (2409 rows)

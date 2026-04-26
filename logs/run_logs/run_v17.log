@@ -1,0 +1,231 @@
+============================================================
+  V17 — ArcFace Fine-tuning + Fusion
+============================================================
+  GPU: NVIDIA GeForce RTX 5090 | 34GB
+  13074 train, 2409 test
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+STAGE 1: Pretrained Features
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+[M] Mega OK dim=1536
+
+  [...progress...]
+                                                         
+
+  [...progress...]
+                                                            
+[M] Miew OK dim=2152
+
+  [...progress...]
+                                                         
+
+  [...progress...]
+                                                            
+  Done: 5.7min
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+STAGE 2: ArcFace Fine-tuning
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+  ──────────────────────────────────────── LynxID2025
+  [LynxID2025] ArcFace: 77 classes, 2957 imgs
+    H-e1: loss=17.695 acc=0.0%
+    H-e2: loss=16.730 acc=0.0%
+    H-e3: loss=16.002 acc=0.0%
+    B-e1: loss=15.191 acc=0.5%
+    B-e2: loss=13.319 acc=4.9%
+    B-e3: loss=12.244 acc=11.0%
+    B-e4: loss=11.214 acc=15.1%
+    B-e5: loss=10.553 acc=19.1%
+    B-e6: loss=9.995 acc=21.9%
+    B-e7: loss=9.820 acc=22.1%
+    B-e8: loss=9.578 acc=24.6%
+    F-e1: loss=9.347 acc=25.7%
+    F-e2: loss=8.919 acc=28.6%
+    F-e3: loss=8.717 acc=29.5%
+    F-e4: loss=8.677 acc=29.9%
+    F-e5: loss=8.380 acc=31.0%
+
+  [...progress...]
+                                                         
+
+  [...progress...]
+                                                            
+  [LynxID2025] FT features: (3903, 1536)
+
+  ──────────────────────────────────────── SalamanderID2025
+  [SalamanderID2025] ArcFace: 587 classes, 1388 imgs
+    H-e1: loss=20.188 acc=0.0%
+    H-e2: loss=19.707 acc=0.0%
+    H-e3: loss=19.225 acc=0.0%
+    B-e1: loss=19.093 acc=0.0%
+    B-e2: loss=18.526 acc=0.0%
+    B-e3: loss=18.036 acc=0.0%
+    B-e4: loss=17.559 acc=0.0%
+    B-e5: loss=17.236 acc=0.0%
+    B-e6: loss=16.931 acc=0.0%
+    B-e7: loss=16.723 acc=0.0%
+    B-e8: loss=16.758 acc=0.0%
+    F-e1: loss=16.553 acc=0.0%
+    F-e2: loss=16.269 acc=0.0%
+    F-e3: loss=16.110 acc=0.0%
+    F-e4: loss=16.029 acc=0.0%
+    F-e5: loss=15.834 acc=0.0%
+
+  [...progress...]
+                                                       
+
+  [...progress...]
+                                                          
+  [SalamanderID2025] FT features: (2077, 1536)
+
+  ──────────────────────────────────────── SeaTurtleID2022
+  [SeaTurtleID2022] ArcFace: 438 classes, 8729 imgs
+    H-e1: loss=18.285 acc=0.0%
+    H-e2: loss=14.997 acc=0.4%
+    H-e3: loss=12.658 acc=4.9%
+    B-e1: loss=11.575 acc=10.8%
+    B-e2: loss=9.710 acc=19.5%
+    B-e3: loss=8.552 acc=26.1%
+    B-e4: loss=7.742 acc=31.5%
+    B-e5: loss=7.179 acc=35.7%
+    B-e6: loss=6.702 acc=39.5%
+    B-e7: loss=6.577 acc=39.9%
+    B-e8: loss=6.425 acc=40.7%
+    F-e1: loss=6.099 acc=43.5%
+    F-e2: loss=5.491 acc=47.8%
+    F-e3: loss=5.130 acc=50.9%
+    F-e4: loss=4.907 acc=52.7%
+    F-e5: loss=4.885 acc=53.1%
+
+  [...progress...]
+                                                         
+
+  [...progress...]
+                                                            
+  [SeaTurtleID2022] FT features: (9229, 1536)
+  ArcFace done: 30.4min
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+STAGE 3: Clustering
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+  ════════════════════════════════════════ LynxID2025
+    Blend: ft_w=0.95 th=0.750 ARI=0.2788
+    Pretrained-only ARI=0.1425
+    Using blended (ft_w=0.95)
+    → 89 clusters for 946 images
+
+  ════════════════════════════════════════ SalamanderID2025
+    Blend: ft_w=0.95 th=0.370 ARI=0.1171
+    Pretrained-only ARI=0.0952
+    Using blended (ft_w=0.95)
+    → 584 clusters for 689 images
+
+  ════════════════════════════════════════ SeaTurtleID2022
+    Blend: ft_w=1.00 th=0.590 ARI=0.9095
+    Pretrained-only ARI=0.8570
+    Using blended (ft_w=1.00)
+    → 211 clusters for 500 images
+
+
+... [progress bars truncated] ...
+
+
+  [...progress...]
+                                                         
+
+  [...progress...]
+                                                            
+  [LynxID2025] FT features: (3903, 1536)
+
+  ──────────────────────────────────────── SalamanderID2025
+  [SalamanderID2025] ArcFace: 587 classes, 1388 imgs
+    H-e1: loss=20.188 acc=0.0%
+    H-e2: loss=19.707 acc=0.0%
+    H-e3: loss=19.225 acc=0.0%
+    B-e1: loss=19.093 acc=0.0%
+    B-e2: loss=18.526 acc=0.0%
+    B-e3: loss=18.036 acc=0.0%
+    B-e4: loss=17.559 acc=0.0%
+    B-e5: loss=17.236 acc=0.0%
+    B-e6: loss=16.931 acc=0.0%
+    B-e7: loss=16.723 acc=0.0%
+    B-e8: loss=16.758 acc=0.0%
+    F-e1: loss=16.553 acc=0.0%
+    F-e2: loss=16.269 acc=0.0%
+    F-e3: loss=16.110 acc=0.0%
+    F-e4: loss=16.029 acc=0.0%
+    F-e5: loss=15.834 acc=0.0%
+
+  [...progress...]
+                                                       
+
+  [...progress...]
+                                                          
+  [SalamanderID2025] FT features: (2077, 1536)
+
+  ──────────────────────────────────────── SeaTurtleID2022
+  [SeaTurtleID2022] ArcFace: 438 classes, 8729 imgs
+    H-e1: loss=18.285 acc=0.0%
+    H-e2: loss=14.997 acc=0.4%
+    H-e3: loss=12.658 acc=4.9%
+    B-e1: loss=11.575 acc=10.8%
+    B-e2: loss=9.710 acc=19.5%
+    B-e3: loss=8.552 acc=26.1%
+    B-e4: loss=7.742 acc=31.5%
+    B-e5: loss=7.179 acc=35.7%
+    B-e6: loss=6.702 acc=39.5%
+    B-e7: loss=6.577 acc=39.9%
+    B-e8: loss=6.425 acc=40.7%
+    F-e1: loss=6.099 acc=43.5%
+    F-e2: loss=5.491 acc=47.8%
+    F-e3: loss=5.130 acc=50.9%
+    F-e4: loss=4.907 acc=52.7%
+    F-e5: loss=4.885 acc=53.1%
+
+  [...progress...]
+                                                         
+
+  [...progress...]
+                                                            
+  [SeaTurtleID2022] FT features: (9229, 1536)
+  ArcFace done: 30.4min
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+STAGE 3: Clustering
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+  ════════════════════════════════════════ LynxID2025
+    Blend: ft_w=0.95 th=0.750 ARI=0.2788
+    Pretrained-only ARI=0.1425
+    Using blended (ft_w=0.95)
+    → 89 clusters for 946 images
+
+  ════════════════════════════════════════ SalamanderID2025
+    Blend: ft_w=0.95 th=0.370 ARI=0.1171
+    Pretrained-only ARI=0.0952
+    Using blended (ft_w=0.95)
+    → 584 clusters for 689 images
+
+  ════════════════════════════════════════ SeaTurtleID2022
+    Blend: ft_w=1.00 th=0.590 ARI=0.9095
+    Pretrained-only ARI=0.8570
+    Using blended (ft_w=1.00)
+    → 211 clusters for 500 images
+
+  ════════════════════════════════════════ TexasHornedLizards
+    No training data, 274 images
+    → 94 clusters (th=0.350)
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+STAGE 4: Submission
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  ./output/submission.csv
+  Rows=2409 Clusters=978
+    LynxID2025                 946 imgs, 89 cl
+    SalamanderID2025           689 imgs, 584 cl
+    SeaTurtleID2022            500 imgs, 211 cl
+    TexasHornedLizards         274 imgs, 94 cl
+  Time: 38.1min
+DONE!

@@ -1,0 +1,290 @@
+============================================================
+  AnimalCLEF2026 V16 — Calibrated Fusion
+============================================================
+  GPU: NVIDIA GeForce RTX 5090 | 34GB
+  13074 train, 2409 test
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+STAGE 1: Features
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+[M] MegaDescriptor OK dim=1536
+
+  [...progress...]
+                                                         
+
+  [...progress...]
+                                                            
+[M] MiewID OK dim=2152
+
+  [...progress...]
+                                                         
+
+  [...progress...]
+                                                            
+Using cache found in ./.cache/torch/hub/facebookresearch_dinov2_main
+Downloading: "https://dl.fbaipublicfiles.com/dinov2/dinov2_vitl14/dinov2_vitl14_reg4_pretrain.pth" to ./.cache/torch/hub/checkpoints/dinov2_vitl14_reg4_pretrain.pth
+
+  [...progress...]
+[M] DINOv2-ViT-L-reg OK dim=1024
+
+  [...progress...]
+                                                         
+
+  [...progress...]
+                                                            
+  Models: ['mega', 'miew', 'dino'] | 22.5min
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+STAGE 2: Local Matcher
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+[L] ALIKED+LightGlue OK
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+STAGE 3: Per-species Calibrated Pipeline
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+  ════════════════════════════════════════════════
+  LynxID2025
+  ════════════════════════════════════════════════
+    [A] Model weight search (1200 samples)...
+        weights={'mega': np.float64(0.9), 'miew': np.float64(0.08999999999999998), 'dino': np.float64(0.009999999999999995)}
+        global ARI=0.1523 th=0.610
+    [B] Local matching calibration...
+      kp: 938 images...
+
+  [...progress...]
+                                                           
+      match: 8000 pairs...
+
+  [...progress...]
+                                                                
+        fused: β=0.50 th=0.830 ARI=0.1593 (was 0.1523)
+    [C] Test clustering...
+      kp: 894 images...
+
+  [...progress...]
+                                                           
+      match: 15000 pairs...
+
+  [...progress...]
+                                                                  
+    → 47 clusters
+
+  ════════════════════════════════════════════════
+  SalamanderID2025
+  ════════════════════════════════════════════════
+    [A] Model weight search (1200 samples)...
+        weights={'mega': np.float64(0.2), 'miew': np.float64(0.0), 'dino': np.float64(0.8)}
+        global ARI=0.1183 th=0.090
+    [B] Local matching calibration...
+      kp: 1014 images...
+
+  [...progress...]
+                                                             
+      match: 8000 pairs...
+
+  [...progress...]
+                                                                
+        fused: β=0.30 th=0.350 ARI=0.1639 (was 0.1183)
+    [C] Test clustering...
+      kp: 685 images...
+
+  [...progress...]
+                                                           
+      match: 15000 pairs...
+
+  [...progress...]
+                                                                  
+    → 573 clusters
+
+  ════════════════════════════════════════════════
+  SeaTurtleID2022
+  ════════════════════════════════════════════════
+    [A] Model weight search (1200 samples)...
+        weights={'mega': np.float64(0.5), 'miew': np.float64(0.2), 'dino': np.float64(0.3)}
+        global ARI=0.8602 th=0.330
+    [B] Local matching calibration...
+      kp: 1184 images...
+
+  [...progress...]
+                                                             
+      match: 8000 pairs...
+
+  [...progress...]
+                                                                 
+        fused: β=0.30 th=0.530 ARI=0.8624 (was 0.8602)
+    [C] Test clustering...
+      kp: 500 images...
+
+  [...progress...]
+                                                           
+      match: 9501 pairs...
+
+  [...progress...]
+                                                                
+    → 261 clusters
+
+  ════════════════════════════════════════════════
+  TexasHornedLizards
+  ════════════════════════════════════════════════
+    No training data, 274 test images
+      kp: 274 images...
+
+  [...progress...]
+                                                           
+      match: 5767 pairs...
+
+  [...progress...]
+                                                                 
+    β=0.1 th=0.330
+    → 93 clusters
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+STAGE 4: Submission
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  ./output/submission.csv
+  Rows=2409 Clusters=974
+    LynxID2025                 946 imgs, 47 cl
+    SalamanderID2025           689 imgs, 573 cl
+    SeaTurtleID2022            500 imgs, 261 cl
+    TexasHornedLizards         274 imgs, 93 cl
+  Time: 51.1min
+DONE!
+
+... [progress bars truncated] ...
+
+
+  [...progress...]
+                                                         
+
+  [...progress...]
+                                                            
+Using cache found in ./.cache/torch/hub/facebookresearch_dinov2_main
+Downloading: "https://dl.fbaipublicfiles.com/dinov2/dinov2_vitl14/dinov2_vitl14_reg4_pretrain.pth" to ./.cache/torch/hub/checkpoints/dinov2_vitl14_reg4_pretrain.pth
+
+  [...progress...]
+[M] DINOv2-ViT-L-reg OK dim=1024
+
+  [...progress...]
+                                                         
+
+  [...progress...]
+                                                            
+  Models: ['mega', 'miew', 'dino'] | 22.5min
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+STAGE 2: Local Matcher
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+[L] ALIKED+LightGlue OK
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+STAGE 3: Per-species Calibrated Pipeline
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+  ════════════════════════════════════════════════
+  LynxID2025
+  ════════════════════════════════════════════════
+    [A] Model weight search (1200 samples)...
+        weights={'mega': np.float64(0.9), 'miew': np.float64(0.08999999999999998), 'dino': np.float64(0.009999999999999995)}
+        global ARI=0.1523 th=0.610
+    [B] Local matching calibration...
+      kp: 938 images...
+
+  [...progress...]
+                                                           
+      match: 8000 pairs...
+
+  [...progress...]
+                                                                
+        fused: β=0.50 th=0.830 ARI=0.1593 (was 0.1523)
+    [C] Test clustering...
+      kp: 894 images...
+
+  [...progress...]
+                                                           
+      match: 15000 pairs...
+
+  [...progress...]
+                                                                  
+    → 47 clusters
+
+  ════════════════════════════════════════════════
+  SalamanderID2025
+  ════════════════════════════════════════════════
+    [A] Model weight search (1200 samples)...
+        weights={'mega': np.float64(0.2), 'miew': np.float64(0.0), 'dino': np.float64(0.8)}
+        global ARI=0.1183 th=0.090
+    [B] Local matching calibration...
+      kp: 1014 images...
+
+  [...progress...]
+                                                             
+      match: 8000 pairs...
+
+  [...progress...]
+                                                                
+        fused: β=0.30 th=0.350 ARI=0.1639 (was 0.1183)
+    [C] Test clustering...
+      kp: 685 images...
+
+  [...progress...]
+                                                           
+      match: 15000 pairs...
+
+  [...progress...]
+                                                                  
+    → 573 clusters
+
+  ════════════════════════════════════════════════
+  SeaTurtleID2022
+  ════════════════════════════════════════════════
+    [A] Model weight search (1200 samples)...
+        weights={'mega': np.float64(0.5), 'miew': np.float64(0.2), 'dino': np.float64(0.3)}
+        global ARI=0.8602 th=0.330
+    [B] Local matching calibration...
+      kp: 1184 images...
+
+  [...progress...]
+                                                             
+      match: 8000 pairs...
+
+  [...progress...]
+                                                                 
+        fused: β=0.30 th=0.530 ARI=0.8624 (was 0.8602)
+    [C] Test clustering...
+      kp: 500 images...
+
+  [...progress...]
+                                                           
+      match: 9501 pairs...
+
+  [...progress...]
+                                                                
+    → 261 clusters
+
+  ════════════════════════════════════════════════
+  TexasHornedLizards
+  ════════════════════════════════════════════════
+    No training data, 274 test images
+      kp: 274 images...
+
+  [...progress...]
+                                                           
+      match: 5767 pairs...
+
+  [...progress...]
+                                                                 
+    β=0.1 th=0.330
+    → 93 clusters
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+STAGE 4: Submission
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  ./output/submission.csv
+  Rows=2409 Clusters=974
+    LynxID2025                 946 imgs, 47 cl
+    SalamanderID2025           689 imgs, 573 cl
+    SeaTurtleID2022            500 imgs, 261 cl
+    TexasHornedLizards         274 imgs, 93 cl
+  Time: 51.1min
+DONE!

@@ -1,0 +1,47 @@
+# Data files
+*.csv
+*.npz
+*.pth
+*.bin
+*.safetensors
+*.ckpt
+*.pt
+
+# Image files (except figures/ for README visualization)
+*.jpg
+*.jpeg
+*.png
+*.bmp
+*.tiff
+!figures/*.png
+!figures/*.jpg
+
+# Model weights
+models/
+*.h5
+
+# Cache
+feat_cache/
+feat_cache_wildlife/
+__pycache__/
+*.pyc
+.ipynb_checkpoints/
+
+# OS
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Logs (keep only important ones in logs/run_logs/)
+*.log
+!logs/run_logs/*.log
+
+# Large datasets
+animal-clef-2026/
+wildlifereid10k_full/

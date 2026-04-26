@@ -1,0 +1,171 @@
+============================================================
+  AnimalCLEF2026 V14 — Clean Clustering Solution
+============================================================
+  GPU: NVIDIA GeForce RTX 5090 | VRAM: 33.7GB
+
+  Data: 13074 train, 2409 test
+    LynxID2025                train= 2957  ids=  77  test= 946
+    SalamanderID2025          train= 1388  ids= 587  test= 689
+    SeaTurtleID2022           train= 8729  ids= 438  test= 500
+    TexasHornedLizards        train=    0  ids=   0  test= 274
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+STAGE 1: Feature Extraction (TTA: orig + hflip)
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+[MODEL] Loading MegaDescriptor-L-384... OK (dim=1536)
+
+  [...progress...]
+                                                             
+
+  [...progress...]
+                                                            
+  MegaDescriptor: (15483, 1536)
+[MODEL] Loading MiewID-MSV3... OK (dim=2152)
+
+  [...progress...]
+                                                             
+
+  [...progress...]
+                                                            
+  MiewID: (15483, 2152)
+  Feature extraction done in 5.7min
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+STAGE 2: Per-species Threshold Tuning + Clustering
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+  ──────────────────────────────────────────────────
+  LynxID2025
+  ──────────────────────────────────────────────────
+    Train: 2957 images, 77 individuals
+    Test:  946 images
+    Tuned threshold: 0.440
+    Train ARI: 0.1544 (203 clusters for 77 true ids)
+    Test clusters: 70
+
+  ──────────────────────────────────────────────────
+  SalamanderID2025
+  ──────────────────────────────────────────────────
+    Train: 1388 images, 587 individuals
+    Test:  689 images
+    Tuned threshold: 0.220
+    Train ARI: 0.1008 (1118 clusters for 587 true ids)
+    Test clusters: 573
+
+  ──────────────────────────────────────────────────
+  SeaTurtleID2022
+  ──────────────────────────────────────────────────
+    Train: 8729 images, 438 individuals
+    Test:  500 images
+    Tuned threshold: 0.380
+    Train ARI: 0.8585 (1245 clusters for 438 true ids)
+    Test clusters: 241
+
+  ──────────────────────────────────────────────────
+  TexasHornedLizards
+  ──────────────────────────────────────────────────
+    Test:  274 images (NO training data)
+    Using threshold: 0.340 (fallback median: 0.380)
+    Test clusters: 92
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+STAGE 4: Generate Submission
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+  Output: ./output/submission.csv
+  Rows: 2409  Total clusters: 976
+    LynxID2025                 imgs= 946  clusters=70
+    SalamanderID2025           imgs= 689  clusters=573
+    SeaTurtleID2022            imgs= 500  clusters=241
+    TexasHornedLizards         imgs= 274  clusters=92
+
+  Total time: 10.8min
+============================================================
+DONE!
+
+... [progress bars truncated] ...
+
+============================================================
+  AnimalCLEF2026 V14 — Clean Clustering Solution
+============================================================
+  GPU: NVIDIA GeForce RTX 5090 | VRAM: 33.7GB
+
+  Data: 13074 train, 2409 test
+    LynxID2025                train= 2957  ids=  77  test= 946
+    SalamanderID2025          train= 1388  ids= 587  test= 689
+    SeaTurtleID2022           train= 8729  ids= 438  test= 500
+    TexasHornedLizards        train=    0  ids=   0  test= 274
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+STAGE 1: Feature Extraction (TTA: orig + hflip)
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+[MODEL] Loading MegaDescriptor-L-384... OK (dim=1536)
+
+  [...progress...]
+                                                             
+
+  [...progress...]
+                                                            
+  MegaDescriptor: (15483, 1536)
+[MODEL] Loading MiewID-MSV3... OK (dim=2152)
+
+  [...progress...]
+                                                             
+
+  [...progress...]
+                                                            
+  MiewID: (15483, 2152)
+  Feature extraction done in 5.7min
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+STAGE 2: Per-species Threshold Tuning + Clustering
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+  ──────────────────────────────────────────────────
+  LynxID2025
+  ──────────────────────────────────────────────────
+    Train: 2957 images, 77 individuals
+    Test:  946 images
+    Tuned threshold: 0.440
+    Train ARI: 0.1544 (203 clusters for 77 true ids)
+    Test clusters: 70
+
+  ──────────────────────────────────────────────────
+  SalamanderID2025
+  ──────────────────────────────────────────────────
+    Train: 1388 images, 587 individuals
+    Test:  689 images
+    Tuned threshold: 0.220
+    Train ARI: 0.1008 (1118 clusters for 587 true ids)
+    Test clusters: 573
+
+  ──────────────────────────────────────────────────
+  SeaTurtleID2022
+  ──────────────────────────────────────────────────
+    Train: 8729 images, 438 individuals
+    Test:  500 images
+    Tuned threshold: 0.380
+    Train ARI: 0.8585 (1245 clusters for 438 true ids)
+    Test clusters: 241
+
+  ──────────────────────────────────────────────────
+  TexasHornedLizards
+  ──────────────────────────────────────────────────
+    Test:  274 images (NO training data)
+    Using threshold: 0.340 (fallback median: 0.380)
+    Test clusters: 92
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+STAGE 4: Generate Submission
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+  Output: ./output/submission.csv
+  Rows: 2409  Total clusters: 976
+    LynxID2025                 imgs= 946  clusters=70
+    SalamanderID2025           imgs= 689  clusters=573
+    SeaTurtleID2022            imgs= 500  clusters=241
+    TexasHornedLizards         imgs= 274  clusters=92
+
+  Total time: 10.8min
+============================================================
+DONE!

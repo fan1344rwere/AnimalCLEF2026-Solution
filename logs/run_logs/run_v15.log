@@ -1,0 +1,260 @@
+============================================================
+  AnimalCLEF2026 V15 — Local Matching + Multi-Backbone
+============================================================
+  GPU: NVIDIA GeForce RTX 5090 | VRAM: 33.7GB
+
+  Data: 13074 train, 2409 test
+    LynxID2025                tr= 2957 ids=  77 te= 946
+    SalamanderID2025          tr= 1388 ids= 587 te= 689
+    SeaTurtleID2022           tr= 8729 ids= 438 te= 500
+    TexasHornedLizards        tr=    0 ids=   0 te= 274
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+STAGE 1: Global Feature Extraction (3 models + TTA)
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+[MODEL] MegaDescriptor-L-384... OK dim=1536
+
+  [...progress...]
+                                                             
+
+  [...progress...]
+                                                            
+  MegaDescriptor: (15483, 1536)
+[MODEL] MiewID-MSV3... OK dim=2152
+
+  [...progress...]
+                                                             
+
+  [...progress...]
+                                                            
+  MiewID: (15483, 2152)
+[MODEL] DINOv2-ViT-L... Using cache found in ./.cache/torch/hub/facebookresearch_dinov2_main
+Downloading: "https://dl.fbaipublicfiles.com/dinov2/dinov2_vitl14/dinov2_vitl14_pretrain.pth" to ./.cache/torch/hub/checkpoints/dinov2_vitl14_pretrain.pth
+
+  [...progress...]
+OK dim=1024
+
+  [...progress...]
+                                                             
+
+  [...progress...]
+                                                            
+  DINOv2: (15483, 1024)
+  Feature extraction: 22.8min
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+STAGE 2: Local Matcher Init
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+[LOCAL] ALIKED + LightGlue loaded OK
+  Global fusion weights: {'mega': 0.3333333333333333, 'miew': 0.3333333333333333, 'dino': 0.3333333333333333}
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+STAGE 3: Per-species Clustering
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+  ══════════════════════════════════════════════════
+  LynxID2025
+  ══════════════════════════════════════════════════
+    Train: 2957 images, 77 ids | Test: 946 images
+    Global-only threshold: 0.360 (ARI=0.1384, 308cl/70ids)
+    Local matching: 20000 test pairs (shortlist K=30)
+    [LOCAL] Extracting keypoints for 938 images...
+
+  [...progress...]
+                                                         
+    [LOCAL] Matching 20000 pairs...
+
+  [...progress...]
+                                                                
+    Re-tuning threshold with fused similarity...
+    Test clusters: 264
+
+  ══════════════════════════════════════════════════
+  SalamanderID2025
+  ══════════════════════════════════════════════════
+    Train: 1388 images, 587 ids | Test: 689 images
+    Global-only threshold: 0.170 (ARI=0.1117, 1094cl/587ids)
+    Local matching: 15512 test pairs (shortlist K=30)
+    [LOCAL] Extracting keypoints for 689 images...
+
+  [...progress...]
+                                                         
+    [LOCAL] Matching 15512 pairs...
+
+  [...progress...]
+                                                                
+    Re-tuning threshold with fused similarity...
+    Test clusters: 676
+
+  ══════════════════════════════════════════════════
+  SeaTurtleID2022
+  ══════════════════════════════════════════════════
+    Train: 8729 images, 438 ids | Test: 500 images
+    Global-only threshold: 0.300 (ARI=0.8393, 594cl/378ids)
+    Local matching: 9925 test pairs (shortlist K=30)
+    [LOCAL] Extracting keypoints for 500 images...
+
+  [...progress...]
+                                                         
+    [LOCAL] Matching 9925 pairs...
+
+  [...progress...]
+                                                              
+    Re-tuning threshold with fused similarity...
+    Test clusters: 418
+
+  ══════════════════════════════════════════════════
+  TexasHornedLizards
+  ══════════════════════════════════════════════════
+    Test: 274 images (NO training data)
+    Local matching: 5897 pairs
+    [LOCAL] Extracting keypoints for 274 images...
+
+  [...progress...]
+                                                         
+    [LOCAL] Matching 5897 pairs...
+
+  [...progress...]
+                                                               
+    Threshold: 0.290 | Clusters: 107
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+STAGE 4: Submission
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+  Output: ./output/submission.csv
+  Rows: 2409 | Clusters: 1465
+    LynxID2025                imgs= 946 cl=264
+    SalamanderID2025          imgs= 689 cl=676
+    SeaTurtleID2022           imgs= 500 cl=418
+    TexasHornedLizards        imgs= 274 cl=107
+
+  Total: 34.3min
+============================================================
+DONE!
+
+... [progress bars truncated] ...
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+STAGE 1: Global Feature Extraction (3 models + TTA)
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+[MODEL] MegaDescriptor-L-384... OK dim=1536
+
+  [...progress...]
+                                                             
+
+  [...progress...]
+                                                            
+  MegaDescriptor: (15483, 1536)
+[MODEL] MiewID-MSV3... OK dim=2152
+
+  [...progress...]
+                                                             
+
+  [...progress...]
+                                                            
+  MiewID: (15483, 2152)
+[MODEL] DINOv2-ViT-L... Using cache found in ./.cache/torch/hub/facebookresearch_dinov2_main
+Downloading: "https://dl.fbaipublicfiles.com/dinov2/dinov2_vitl14/dinov2_vitl14_pretrain.pth" to ./.cache/torch/hub/checkpoints/dinov2_vitl14_pretrain.pth
+
+  [...progress...]
+OK dim=1024
+
+  [...progress...]
+                                                             
+
+  [...progress...]
+                                                            
+  DINOv2: (15483, 1024)
+  Feature extraction: 22.8min
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+STAGE 2: Local Matcher Init
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+[LOCAL] ALIKED + LightGlue loaded OK
+  Global fusion weights: {'mega': 0.3333333333333333, 'miew': 0.3333333333333333, 'dino': 0.3333333333333333}
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+STAGE 3: Per-species Clustering
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+  ══════════════════════════════════════════════════
+  LynxID2025
+  ══════════════════════════════════════════════════
+    Train: 2957 images, 77 ids | Test: 946 images
+    Global-only threshold: 0.360 (ARI=0.1384, 308cl/70ids)
+    Local matching: 20000 test pairs (shortlist K=30)
+    [LOCAL] Extracting keypoints for 938 images...
+
+  [...progress...]
+                                                         
+    [LOCAL] Matching 20000 pairs...
+
+  [...progress...]
+                                                                
+    Re-tuning threshold with fused similarity...
+    Test clusters: 264
+
+  ══════════════════════════════════════════════════
+  SalamanderID2025
+  ══════════════════════════════════════════════════
+    Train: 1388 images, 587 ids | Test: 689 images
+    Global-only threshold: 0.170 (ARI=0.1117, 1094cl/587ids)
+    Local matching: 15512 test pairs (shortlist K=30)
+    [LOCAL] Extracting keypoints for 689 images...
+
+  [...progress...]
+                                                         
+    [LOCAL] Matching 15512 pairs...
+
+  [...progress...]
+                                                                
+    Re-tuning threshold with fused similarity...
+    Test clusters: 676
+
+  ══════════════════════════════════════════════════
+  SeaTurtleID2022
+  ══════════════════════════════════════════════════
+    Train: 8729 images, 438 ids | Test: 500 images
+    Global-only threshold: 0.300 (ARI=0.8393, 594cl/378ids)
+    Local matching: 9925 test pairs (shortlist K=30)
+    [LOCAL] Extracting keypoints for 500 images...
+
+  [...progress...]
+                                                         
+    [LOCAL] Matching 9925 pairs...
+
+  [...progress...]
+                                                              
+    Re-tuning threshold with fused similarity...
+    Test clusters: 418
+
+  ══════════════════════════════════════════════════
+  TexasHornedLizards
+  ══════════════════════════════════════════════════
+    Test: 274 images (NO training data)
+    Local matching: 5897 pairs
+    [LOCAL] Extracting keypoints for 274 images...
+
+  [...progress...]
+                                                         
+    [LOCAL] Matching 5897 pairs...
+
+  [...progress...]
+                                                               
+    Threshold: 0.290 | Clusters: 107
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+STAGE 4: Submission
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+  Output: ./output/submission.csv
+  Rows: 2409 | Clusters: 1465
+    LynxID2025                imgs= 946 cl=264
+    SalamanderID2025          imgs= 689 cl=676
+    SeaTurtleID2022           imgs= 500 cl=418
+    TexasHornedLizards        imgs= 274 cl=107
+
+  Total: 34.3min
+============================================================
+DONE!
