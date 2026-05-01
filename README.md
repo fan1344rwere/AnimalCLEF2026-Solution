@@ -6,7 +6,7 @@
 >
 > **#1 highest-scoring open-source solution published before competition deadline**
 >
-> Achieved **WITHOUT** the WildlifeReID-10k dataset (~25GB, 140K images, 10K+ individuals across 36 species covering competition target species) | Single RTX 5090 | 2 weeks development
+> Achieved **WITHOUT** the officially provided WildlifeReID-10k dataset (26.76GB, 140K images, 10K+ individuals across 36 species, covering partial competition target species) | Single RTX 5090 | 2 weeks development
 
 ## Visual Results
 
