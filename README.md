@@ -1,21 +1,12 @@
-# AnimalCLEF2026 Solution 鈥?#1 Open-Source Solution (Private LB: 0.31974)
+# AnimalCLEF2026 Solution - #1 Open-Source Solution Published During Competition (Private LB: 0.31974)
 
 > **AnimalCLEF26 @ CVPR & CLEF 2026** | Discovery and Re-Identification of Individual Animals
 >
-> **Private Leaderboard ARI: 0.31974** | Public LB ARI: 0.24012 | **#1 among all publicly shared solutions**
+> **Private Leaderboard ARI: 0.31974** | Public LB ARI: 0.24012
 >
-> Achieved **WITHOUT** using the official 26GB animal training dataset
-
-## Final Competition Results (Private Leaderboard)
-
-| Solution | Private Score | Public Score | Source |
-|----------|-------------|-------------|--------|
-| **Ours (This Repo)** | **0.31974** | **0.24012** | [GitHub](https://github.com/fan1344rwere/AnimalCLEF2026-Solution) |
-| 2nd Open-Source | 0.26604 | 0.22475 | Kaggle Notebook |
-| 3rd Open-Source | 0.22760 | 0.23044 | Kaggle Notebook |
-| Official Starter Baseline | ~0.19 | 0.19401 | Kaggle Notebook |
-
-> We outperform the 2nd-best open-source solution by **+5.4 ARI points (20% relative improvement)** on the private leaderboard.
+> **#1 highest-scoring open-source solution published before competition deadline (Apr 30, 2026)**
+>
+> Achieved **WITHOUT** using the official 26GB animal training dataset | Single RTX 5090 | 2 weeks development
 
 ## Visual Results
 
@@ -145,6 +136,7 @@ This project was developed over ~2 weeks of intensive iteration on a single RTX 
 | **Apr 12** | V21 | Foundation ensemble + SAM2 segmentation + k-Reciprocal Re-ranking | Raw features still weak, but ensemble structure solid |
 | **Apr 12** | V22 | **Breakthrough**: SupCon projection heads on 5-backbone features (18,688-dim) | SeaTurtle train ARI: 0 鈫?**0.91**. Best LB submission |
 | **Apr 13** | V23-V25 | Semi-supervised t-SNE, hybrid SupCon + raw, per-backbone projection | None beat V21+V22 ensemble |
+| **Apr 24** | V30 | WildlifeReID-10k pretraining 鈫?per-species fine-tuning | Lynx ARI improved (0.26 鈫?**0.40**), but didn't improve LB |
 
 > **All 18 run logs** are preserved in [`logs/run_logs/`](logs/run_logs/) 鈥?including GPU info, training loss curves, per-species ARI, and clustering statistics. These provide full reproducibility evidence.
 
@@ -182,7 +174,7 @@ SalamanderID2025:
 
 5. **TexasHornedLizards needs special treatment** - Zero training data means no supervised signal. Transfer learning from other species is the only option.
 
-6. **Private LB validates generalization** - Score rising from 0.24 (public) to 0.32 (private) proves the SupCon metric space genuinely generalizes, not overfitting.
+6. **Private LB validates generalization** - Score rising from 0.24 (public) to 0.32 (private) proves the SupCon metric space genuinely generalizes rather than overfitting.
 
 ## How to Reproduce
 
@@ -223,4 +215,4 @@ MIT License
 
 ---
 
-**Keywords**: AnimalCLEF2026, AnimalCLEF26, CVPR 2026, CLEF 2026, LifeCLEF 2026, FGVC13, Kaggle competition, animal re-identification, wildlife re-ID, individual animal identification, supervised contrastive learning, SupCon, foundation model ensemble, DINOv3, InternViT, SigLIP2, EVA02, MegaDescriptor, SAM2, clustering, Adjusted Rand Index, ARI, open-source solution, top solution, best score, #1 solution, private leaderboard, first place
+**Keywords**: AnimalCLEF2026, AnimalCLEF26, CVPR 2026, CLEF 2026, LifeCLEF 2026, FGVC13, Kaggle competition, animal re-identification, wildlife re-ID, individual animal identification, supervised contrastive learning, SupCon, foundation model ensemble, DINOv3, InternViT, SigLIP2, EVA02, MegaDescriptor, SAM2, clustering, Adjusted Rand Index, ARI, open-source solution, top solution, best score, first place, private leaderboard, number one solution
