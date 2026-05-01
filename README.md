@@ -14,7 +14,7 @@
 
 ![t-SNE Visualization](figures/fig1_tsne.png)
 
-*Left: MegaDescriptor features clearly separate **species** but cannot distinguish **individuals**. Right: Within Sea Turtle, top-12 individual IDs are completely mixed 鈥?raw features have near-zero individual discriminability. This motivated our SupCon projection approach.*
+*Left: MegaDescriptor features clearly separate **species** but cannot distinguish **individuals**. Right: Within Sea Turtle, top-12 individual IDs are completely mixed -- raw features have near-zero individual discriminability. This motivated our SupCon projection approach.*
 
 ### Zero-Shot Challenge: Texas Horned Lizards
 
@@ -22,7 +22,7 @@
 <img src="figures/texas_sheet_0.jpg" width="48%"> <img src="figures/texas_sheet_1.jpg" width="48%">
 </p>
 
-*Texas Horned Lizards has **zero** training images. These montages show the test set 鈥?clustering must rely entirely on transfer learning from other species.*
+*Texas Horned Lizards has **zero** training images. These montages show the test set -- clustering must rely entirely on transfer learning from other species.*
 
 ## Competition Overview
 
@@ -90,15 +90,15 @@ Key insight: raw foundation model features have near-zero individual discriminab
 |   `-- v30_wildlife_supcon.py       # Wildlife SupCon experiments
 |
 |-- logs/
-|   `-- run_logs/             # 鈽?Real training logs from GPU runs
+|   `-- run_logs/             # Real training logs from GPU runs
 |       |-- run_v14.log ~ run_v30b.log  # Full stdout from each version
 |       `-- v21w_log.txt ~ v24_log.txt  # Final solution run logs
 |
-|-- figures/                  # 鈽?Visualization results
+|-- figures/                  # Visualization results
 |   |-- fig1_tsne.png               # t-SNE: species vs individual features
 |   `-- texas_sheet_*.jpg            # Texas Horned Lizards montages
 |
-|-- scripts/                  # 鈽?Analysis & visualization scripts
+|-- scripts/                  # Analysis & visualization scripts
 |   |-- gen_tsne.py                  # Generate t-SNE figure
 |   |-- gen_figures.py               # Generate comparison figures
 |   `-- analysis.py                  # Feature analysis utilities
@@ -129,16 +129,16 @@ This project was developed over ~2 weeks of intensive iteration on a single RTX 
 | **Apr 11** | V14 | First clean baseline: MegaDescriptor + MiewID, TTA, pure test clustering | ARI=0.205, first time beating the 0.194 baseline |
 | **Apr 11** | V15 | Added LightGlue local feature matching for spatial verification | Marginal gain, heavy compute cost |
 | **Apr 11** | V16 | 3-backbone weighted fusion (Mega + MiewID + DINOv2) + calibrated similarity | **ARI=0.231**, big jump from per-species weight optimization |
-| **Apr 11** | V17 | ArcFace fine-tuning on train set | ARI=0.225, **Salamander 0% accuracy** 鈥?severe overfitting |
-| **Apr 11** | V18 | Joint train+test clustering with identity constraints | ARI=0.117, **disaster** 鈥?train constraints too strong |
+| **Apr 11** | V17 | ArcFace fine-tuning on train set | ARI=0.225, **Salamander 0% accuracy** -- severe overfitting |
+| **Apr 11** | V18 | Joint train+test clustering with identity constraints | ARI=0.117, **disaster** -- train constraints too strong |
 | **Apr 12** | V19 | Orientation-aware matching (left/right/front/back for Lynx) | ARI=0.179, didn't help as expected |
 | **Apr 12** | V20 | Paradigm shift: switched to DINOv3-7B + InternViT-6B + SigLIP2 + EVA02 | Foundation models loaded but raw ARI near 0 |
 | **Apr 12** | V21 | Foundation ensemble + SAM2 segmentation + k-Reciprocal Re-ranking | Raw features still weak, but ensemble structure solid |
-| **Apr 12** | V22 | **Breakthrough**: SupCon projection heads on 5-backbone features (18,688-dim) | SeaTurtle train ARI: 0 鈫?**0.91**. Best LB submission |
+| **Apr 12** | V22 | **Breakthrough**: SupCon projection heads on 5-backbone features (18,688-dim) | SeaTurtle train ARI: 0 -> **0.91**. Best LB submission |
 | **Apr 13** | V23-V25 | Semi-supervised t-SNE, hybrid SupCon + raw, per-backbone projection | None beat V21+V22 ensemble |
-| **Apr 24** | V30 | WildlifeReID-10k pretraining 鈫?per-species fine-tuning | Lynx ARI improved (0.26 鈫?**0.40**), but didn't improve LB |
+| **Apr 24** | V30 | WildlifeReID-10k pretraining -> per-species fine-tuning | Lynx ARI improved (0.26 -> **0.40**), but didn't improve LB |
 
-> **All 18 run logs** are preserved in [`logs/run_logs/`](logs/run_logs/) 鈥?including GPU info, training loss curves, per-species ARI, and clustering statistics. These provide full reproducibility evidence.
+> **All 18 run logs** are preserved in [`logs/run_logs/`](logs/run_logs/) -- including GPU info, training loss curves, per-species ARI, and clustering statistics. These provide full reproducibility evidence.
 
 ### Highlight from Logs
 
@@ -148,11 +148,11 @@ SeaTurtleID2022:
     Epoch 10/50: loss=0.7046
     Epoch 30/50: loss=0.2597
     Epoch 50/50: loss=0.1109
-    SupCon projected train ARI: 0.9060   鈫?from near-zero!
+    SupCon projected train ARI: 0.9060   <-- from near-zero!
 
 SalamanderID2025:
     Epoch 50/50: loss=0.0294
-    SupCon projected train ARI: 0.9115   鈫?587 identities learned
+    SupCon projected train ARI: 0.9115   <-- 587 identities learned
 ```
 
 ## Technical Stack
