@@ -4,9 +4,9 @@
 >
 > **Private Leaderboard ARI: 0.31974** | Public LB ARI: 0.24012
 >
-> **#1 highest-scoring open-source solution published before competition deadline**
+> **#1 highest private-LB scoring open-source solution during competition**
 >
-> Achieved **WITHOUT** the officially provided WildlifeReID-10k dataset (26.76GB, 140K images, 10K+ individuals across 36 species, covering partial competition target species) | Single RTX 5090 | 2 weeks development
+> Achieved **WITHOUT using** the officially provided WildlifeReID-10k dataset (26.76GB, 140K images, 10K+ individuals across 36 species, covering partial competition target species) | Single RTX 5090 | 2 weeks development
 
 ## Visual Results
 
