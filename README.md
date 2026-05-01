@@ -4,9 +4,9 @@
 >
 > **Private Leaderboard ARI: 0.31974** | Public LB ARI: 0.24012
 >
-> **#1 highest-scoring open-source solution published before competition deadline (Apr 30, 2026)**
+> **#1 highest-scoring open-source solution published before competition deadline**
 >
-> Achieved **WITHOUT** using the official 26GB animal training dataset | Single RTX 5090 | 2 weeks development
+> Achieved **WITHOUT** the WildlifeReID-10k dataset (~25GB, 140K images, 10K+ individuals across 36 species covering competition target species) | Single RTX 5090 | 2 weeks development
 
 ## Visual Results
 
